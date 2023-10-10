@@ -1,3 +1,3 @@
-const passwordJWT = "Ts102030";
+const passwordJWT = process.env.JWT_PASSWORD;
 
 module.exports = passwordJWT;
