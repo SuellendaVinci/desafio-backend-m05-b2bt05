@@ -28,4 +28,4 @@ const validaToken = async (req, res, next) => {
   }
 };
 
-module.exports = { validaToken };
+module.exports = validaToken;

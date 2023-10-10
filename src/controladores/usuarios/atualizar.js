@@ -24,12 +24,13 @@ const atualizar = async (req, res) => {
 
     const usuarioAtualizado = await knex("usuarios")
       .update({ nome, email, senha: senhaCriptografada })
-      .where({ id: usuario.id });
+      .where({ id: usuario.id })
+      .returning(["id", "nome", "email"]);
 
-    return res.status(204).json(usuarioAtualizado);
+    return res.status(200).json(usuarioAtualizado);
   } catch (erro) {
     return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
 };
 
-module.exports = { atualizar };
+module.exports = atualizar;
