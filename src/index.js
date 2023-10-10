@@ -1,14 +1,13 @@
 require("dotenv").config();
-const knex = require("./conexao");
+
 const express = require("express");
+const rotas = require("./rotas");
 
 const app = express();
 
 app.use(express.json());
 
-app.get("/", async (req, res) => {
-  res.status(500).json("Iniciando Desafio Módulo 05!");
-});
+app.use(rotas)
 
 const port = process.env.PORT || 3000;
 
