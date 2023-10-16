@@ -1,7 +1,6 @@
 const knex = require("../../conexao");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const passwordJWT = require('../../passwordJWT');
 
 const login = async (req, res) => {
     const {email, senha} = req.body;
@@ -17,7 +16,7 @@ const login = async (req, res) => {
 
         if (!validamentoDeSenha) return res.status(401).json({mensagem:"E-mail ou senha estão inseridos incorretamente, faça as mudanças e tente novamente."});
 
-        const token = jwt.sign({id: usuarioExistente.id}, passwordJWT, {
+        const token = jwt.sign({id: usuarioExistente.id}, process.env.JWT_PASSWORD, {
             expiresIn: "1d",
         });
 
