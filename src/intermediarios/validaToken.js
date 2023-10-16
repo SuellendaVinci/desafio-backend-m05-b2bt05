@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const passwordJWT = require("../passwordJWT");
 const knex = require("../conexao");
 
 const validaToken = async (req, res, next) => {
@@ -12,7 +11,7 @@ const validaToken = async (req, res, next) => {
   const token = authorization.split(" ")[1];
 
   try {
-    const { id } = jwt.verify(token, passwordJWT);
+    const { id } = jwt.verify(token, process.env.JWT_PASSWORD);
 
     const usuario = await knex("usuarios").where({ id }).first();
 
@@ -20,7 +19,9 @@ const validaToken = async (req, res, next) => {
       return res.status(404).json({ mensagem: "Usuário não encontrado." });
     }
 
-    req.usuario = usuario;
+    const {senha:_, ...usuarioRestante} = usuario;
+
+    req.usuario = usuarioRestante;
 
     next();
   } catch (error) {
