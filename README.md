@@ -1,5 +1,15 @@
 ![](https://i.imgur.com/xG74tOh.png)
 
+## LINK DO DEPLOY:
+
+https://tame-erin-chipmunk-wig.cyclic.cloud
+
+Só que ele mostra conteúdo no navegador com as rotas GET
+
+então:
+
+https://tame-erin-chipmunk-wig.cyclic.cloud/categoria
+
 # Desafio Módulo 5 - Backend
 
 ## Como entregar?
