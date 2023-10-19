@@ -1,14 +1,14 @@
-const bcrypt = require('bcrypt');
-const knex = require('../../servicos/bancoDeDados/conexao');
+const bcrypt = require("bcrypt");
+const knex = require("../../servicos/bancoDeDados/conexao");
 
 const atualizar = async (req, res) => {
   const usuario = req.usuario;
   const { nome, email, senha } = req.body;
 
   const camposObrigatorios = {
-    nome: 'O nome é um campo obrigatório!',
-    email: 'O email é um campo obrigatório!',
-    senha: 'A senha é um campo obrigatório!',
+    nome: "O nome é um campo obrigatório!",
+    email: "O email é um campo obrigatório!",
+    senha: "A senha é um campo obrigatório!",
   };
 
   const camposFaltantes = [];
@@ -24,20 +24,20 @@ const atualizar = async (req, res) => {
   }
 
   try {
-    const usuarioExiste = await knex('usuarios').where({ email }).first();
+    const usuarioExiste = await knex("usuarios").where({ email }).first();
 
     if (usuarioExiste && usuarioExiste.id !== usuario.id) {
       return res
         .status(400)
-        .json({ mensagem: 'Este email já está cadastrado!', });
+        .json({ mensagem: "Este email já está cadastrado!" });
     }
 
     const senhaCriptografada = await bcrypt.hash(senha, 10);
 
-    const usuarioAtualizado = await knex('usuarios')
+    const usuarioAtualizado = await knex("usuarios")
       .update({ nome, email, senha: senhaCriptografada })
       .where({ id: usuario.id })
-      .returning(['id', 'nome', 'email']);
+      .returning(["id", "nome", "email"]);
 
     return res.status(200).json(usuarioAtualizado);
   } catch (error) {
