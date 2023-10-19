@@ -5,11 +5,13 @@ const login = require("./controladores/usuarios/login");
 const atualizar = require("./controladores/usuarios/atualizar");
 const validaToken = require("./intermediarios/validaToken");
 const detalhar = require("./controladores/usuarios/detalhar");
+const validarCorpoRequisicao = require("./intermediarios/validarCorpoRequisicao");
+const schemaUsuario = require("./validacoes/schemaUsuario");
 
 const rotas = express();
 
 rotas.get("/categoria", listar);
-rotas.post("/usuario", cadastrar);
+rotas.post("/usuario", validarCorpoRequisicao(schemaUsuario), cadastrar);
 rotas.post("/login", login);
 
 rotas.use(validaToken);

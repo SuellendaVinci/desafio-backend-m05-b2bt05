@@ -1,30 +1,14 @@
 const bcrypt = require("bcrypt");
 const knex = require("../../conexao");
+const joi = require('joi')
 
 const cadastrar = async (req, res) => {
 
-    const {nome, email, senha} = req.body;
+  const { nome, email, senha } = req.body;
 
-    const camposObrigatorios = {
-        nome: "O nome é um campo obrigatório!",
-        email: "O email é um campo obrigatório!",
-        senha: "A senha é um campo obrigatório!",
-      };
-    
-      const camposFaltantes = [];
-    
-      for (const campo in camposObrigatorios) {
-        if (!req.body[campo]) {
-          camposFaltantes.push(camposObrigatorios[campo]);
-        }
-      }
-    
-      if (camposFaltantes.length > 0) {
-        return res.status(400).json({ errors: camposFaltantes });
-      }
+  try {
 
-    try {
-        const emailExiste = await knex('usuarios').where('email', email).first();
+    const emailExiste = await knex('usuarios').where('email', email).first();
 
     if (emailExiste) {
       return res.status(400).json({
@@ -39,11 +23,13 @@ const cadastrar = async (req, res) => {
       .returning(['id', 'nome', 'email']);
 
     return res.status(201).json(usuario);
-        
-    } catch (error) {
-        return res.status(500).json({mensagem: 'Erro interno no servidor!'}); 
-    }
+    
+  } catch (error) {
+    return res.status(500).json({mensagem: error.message}); 
+  }
 
 }
+
+
 
 module.exports = cadastrar;
