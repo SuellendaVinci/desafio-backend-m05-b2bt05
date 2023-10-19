@@ -1,14 +1,26 @@
 const bcrypt = require("bcrypt");
-const knex = require("../../conexao");
+const knex = require("../../servicos/bancoDeDados/conexao");
 
 const atualizar = async (req, res) => {
   const usuario = req.usuario;
   const { nome, email, senha } = req.body;
 
-  if (!nome || !email || !senha) {
-    return res
-      .status(400)
-      .json({ mensagem: "Todos os campos são obrigatórios" });
+  const camposObrigatorios = {
+    nome: "O nome é um campo obrigatório!",
+    email: "O email é um campo obrigatório!",
+    senha: "A senha é um campo obrigatório!",
+  };
+
+  const camposFaltantes = [];
+
+  for (const campo in camposObrigatorios) {
+    if (!req.body[campo]) {
+      camposFaltantes.push(camposObrigatorios[campo]);
+    }
+  }
+
+  if (camposFaltantes.length > 0) {
+    return res.status(400).json({ mensagem: camposFaltantes });
   }
 
   try {
@@ -17,7 +29,7 @@ const atualizar = async (req, res) => {
     if (usuarioExiste && usuarioExiste.id !== usuario.id) {
       return res
         .status(400)
-        .json({ mensagem: "Já existe um usuário com esse e-mail" });
+        .json({ mensagem: "Este email já está cadastrado!" });
     }
 
     const senhaCriptografada = await bcrypt.hash(senha, 10);
@@ -28,8 +40,8 @@ const atualizar = async (req, res) => {
       .returning(["id", "nome", "email"]);
 
     return res.status(200).json(usuarioAtualizado);
-  } catch (erro) {
-    return res.status(500).json({ mensagem: "Erro interno do servidor" });
+  } catch (error) {
+    return res.status(500).json(error.message);
   }
 };
 

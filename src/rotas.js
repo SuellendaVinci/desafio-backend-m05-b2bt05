@@ -1,5 +1,5 @@
 const express = require("express");
-const listar = require("./controladores/categoria/listar");
+const getCategorias = require('./controladores/categoria/listar');
 const cadastrar = require("./controladores/usuarios/cadastrar");
 const login = require("./controladores/usuarios/login");
 const atualizar = require("./controladores/usuarios/atualizar");
@@ -10,13 +10,13 @@ const schemaUsuario = require("./validacoes/schemaUsuario");
 
 const rotas = express();
 
-rotas.get("/categoria", listar);
+rotas.get("/categoria", getCategorias);
 rotas.post("/usuario", validarCorpoRequisicao(schemaUsuario), cadastrar);
 rotas.post("/login", login);
 
 rotas.use(validaToken);
 
-rotas.get("/usuario", detalhar)
-rotas.put("/usuario", atualizar);
+rotas.get('/usuario', detalhar)
+rotas.put('/usuario', atualizar);
 
 module.exports = rotas;
