@@ -1,20 +1,21 @@
-const knex = require('../../conexao');
+const { listarCategorias } = require('../../servicos/repositorios/categorias');
 
-const listar = async (req, res) => {
+const getCategorias = async (req, res) => {
+
+    const { id } = req.params;
 
     try {
 
-        const categorias = await knex('categorias');
+        const categoria = await listarCategorias(id ? id : "");
 
-        return res.status(200).json(categorias);
+        return res.status(categoria.status).json(categoria.resposta);
 
     } catch (error) {
 
-        return res
-            .status(400)
-            .json(error.message);
+        return res.status(500).json(error.message);
 
     }
+
 }
 
-module.exports = listar;
+module.exports = getCategorias;
