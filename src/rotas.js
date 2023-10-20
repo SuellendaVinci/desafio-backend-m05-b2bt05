@@ -18,6 +18,6 @@ rotas.post("/login", validarCorpoRequisicao(schemaLogin), login);
 rotas.use(validaToken);
 
 rotas.get('/usuario', detalhar)
-rotas.put('/usuario', atualizar);
+rotas.put('/usuario', validarCorpoRequisicao(schemaUsuario), atualizar);
 
 module.exports = rotas;
