@@ -17,9 +17,20 @@ const servidor = {
     status: 500,
     resposta: 'Erro interno do servidor.'
 }
+
 const naoAutorizado = {
     status: 404,
     resposta: 'Não autorizado.'
+}
+
+const atualizacaoDeUsuarioValida = {
+    status: 200,
+    resposta: ''
+}
+
+const atualizacaoDeUsuarioInvalida = {
+    status: 400,
+    resposta: ''
 }
 
 const categoriaValida = {
@@ -31,10 +42,12 @@ const categoriaInvalida = {
     status: 404,
     resposta: 'Categoria não encontrada.'
 }
+
 const produtoInvalido = {
     status: 404,
     resposta: 'Produto não encontrada.'
 }
+
 const cpfInvalido = {
     status: 404,
     resposta: 'O cpf informado já possui cadastro.'
@@ -66,6 +79,8 @@ module.exports = {
     loginInvalido,
     naoAutorizado,
     servidor,
+    atualizacaoDeUsuarioValida,
+    atualizacaoDeUsuarioInvalida,
     categoriaInvalida,
     categoriaValida,
     produtoInvalido,
