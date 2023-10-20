@@ -1,5 +1,4 @@
 const bcrypt = require("bcrypt");
-const knex = require("../../servicos/bancoDeDados/conexao");
 const { emailInvalido } = require("../../utilitarios/mensagens");
 const { validarUsuarioExiste, atualizarUsuario } = require("../../servicos/repositorios/atualizarUsuario");
 
