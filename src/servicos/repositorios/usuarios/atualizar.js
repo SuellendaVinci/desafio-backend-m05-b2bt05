@@ -1,5 +1,5 @@
-const knex = require('../bancoDeDados/conexao')
-const mensagens = require('../../utilitarios/mensagens')
+const knex = require('../../bancoDeDados/conexao')
+const mensagens = require('../../../utilitarios/mensagens')
 
 const atualizarUsuario = async (id, nome, email, senha) => {
   try {
