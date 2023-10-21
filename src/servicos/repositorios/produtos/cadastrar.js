@@ -1,6 +1,6 @@
 const knex = require("../../bancoDeDados/conexao");
 
-const cadastrarProduto = async (produto) => {
+const cadastrarProduto = async ({descricao, quantidade_estoque, valor, categoria_id}) => {
   try {
     const categoriaExiste = await knex("categorias")
       .where("id", categoria_id)

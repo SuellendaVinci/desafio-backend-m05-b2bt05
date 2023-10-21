@@ -43,6 +43,11 @@ const categoriaInvalida = {
     resposta: 'Categoria não encontrada.'
 }
 
+const produtoValido = {
+    status: 200,
+    resposta: ''
+}
+
 const produtoInvalido = {
     status: 404,
     resposta: 'Produto não encontrada.'
@@ -100,6 +105,7 @@ module.exports = {
     atualizacaoDeUsuarioInvalida,
     categoriaInvalida,
     categoriaValida,
+    produtoValido,
     produtoInvalido,
     produtoExcluido,
     clienteInvalido,
