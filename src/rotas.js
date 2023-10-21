@@ -12,6 +12,8 @@ const validaToken = require("./intermediarios/validaToken");
 const validarCorpoRequisicao = require("./intermediarios/validarCorpoRequisicao");
 const schemaUsuario = require("./validacoes/schemaUsuario");
 const schemaLogin = require("./validacoes/schemaLogin");
+const schemaProduto = require("./validacoes/schemaProduto");
+const cadastraProduto = require("./controladores/produtos/cadastrar");
 const schemaCliente = require("./validacoes/schemaCliente");
 
 const postCliente = require("./controladores/cliente/cadastrar");
@@ -27,6 +29,7 @@ rotas.use(validaToken);
 rotas.get('/usuario', detalhar)
 rotas.put('/usuario', validarCorpoRequisicao(schemaUsuario), atualizar);
 
+rotas.post('/produto', validarCorpoRequisicao(schemaProduto), cadastraProduto)
 rotas.post('/cliente', validarCorpoRequisicao(schemaCliente), postCliente);
 rotas.put('/cliente/:id', validarCorpoRequisicao(schemaCliente), putCliente);
 
