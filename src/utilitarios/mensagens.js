@@ -68,6 +68,11 @@ const clienteInvalido = {
     resposta: 'Cliente não encontrado.'
 }
 
+const clientesSemCadastro = {
+    status: 404,
+    resposta: 'Não existem clientes cadastrados.'
+};
+
 const clienteJaCadastrado = {
     status: 404,
     resposta: 'Cliente já cadastrado.'
@@ -114,5 +119,6 @@ module.exports = {
     campoObrigatorio,
     formatoCepInvalido,
     formatoCpfInvalido,
-    formatoEmailInvalido
+    formatoEmailInvalido,
+    clientesSemCadastro
 }
