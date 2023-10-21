@@ -1,16 +1,19 @@
-const { cpf } = require('cpf-cnpj-validator');
-const { cpfInvalido } = require('./mensagens');
+
+const { validator } = require('cpf-cnpj-validator')
+const Joi = require('joi').extend(validator)
+
+const { formatoCpfInvalido } = require('./mensagens');
+
+const cpfSchema = Joi.document().cpf();
 
 const validarCpf = (dado) => {
-    const num = cpf.generate()
-    const cpfSemCaractere = dado.replace('.', '').replace('-', '');
-    const cpfValido = cpf.isValid(dado);
+    const cpfValido = cpfSchema.validate(dado);
 
-    if (!cpfValido) {
-        return cpfInvalido
+    if (cpfValido.error) {
+        return formatoCpfInvalido
     }
 
-    return cpf.format(cpfSemCaractere);
+    return cpfValido;
 }
 
 module.exports = validarCpf;
