@@ -27,6 +27,7 @@ rotas.use(validaToken);
 rotas.get('/usuario', detalhar)
 rotas.put('/usuario', validarCorpoRequisicao(schemaUsuario), atualizar);
 
-rotas.post('/cliente', validarCorpoRequisicao(schemaCliente), postCliente)
-rotas.put('/cliente/:id', validarCorpoRequisicao(schemaCliente), putCliente)
+rotas.post('/cliente', validarCorpoRequisicao(schemaCliente), postCliente);
+rotas.put('/cliente/:id', validarCorpoRequisicao(schemaCliente), putCliente);
+
 module.exports = rotas;
