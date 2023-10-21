@@ -1,10 +1,11 @@
 const knex = require('../../bancoDeDados/conexao')
 const mensagens = require('../../../utilitarios/mensagens')
+const {listarCategorias} = require('../categorias')
 
 const listarProdutos = async (categoria_id, produto_id) => {
   try {
     if (categoria_id) {
-      const categoriaExiste = await knex('categorias').where({ id: categoria_id }).first()
+      const categoriaExiste = await listarCategorias(categoria_id);
       if (!categoriaExiste) {
         return mensagens.categoriaInvalida
       }
