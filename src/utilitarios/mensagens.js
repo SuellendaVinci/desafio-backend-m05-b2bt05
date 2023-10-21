@@ -67,10 +67,27 @@ const clienteJaCadastrado = {
     status: 404,
     resposta: 'Cliente já cadastrado.'
 }
+
 const clienteValido = {
     status: 200,
     resposta: true
 }
+
+const campoObrigatorio = (campo) => {
+    return `O campo ${campo} é obrigatório.`
+}
+
+const formatoEmailInvalido =
+    'O campo e-mail deve ter um formato válido.'
+
+
+const formatoCpfInvalido =
+    'O campo cpf deve ter no máximo 14 dígitos.'
+
+
+const formatoCepInvalido =
+    'O campo cep deve ter no máximo 9 dígitos.'
+
 
 module.exports = {
     emailInvalido,
@@ -87,5 +104,9 @@ module.exports = {
     produtoExcluido,
     clienteInvalido,
     clienteJaCadastrado,
-    clienteValido
+    clienteValido,
+    campoObrigatorio,
+    formatoCepInvalido,
+    formatoCpfInvalido,
+    formatoEmailInvalido
 }
