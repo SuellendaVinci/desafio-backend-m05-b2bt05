@@ -1,7 +1,7 @@
 const knex = require('../../bancoDeDados/conexao')
 const mensagens = require('../../../utilitarios/mensagens')
 
-const listarProdutos = async (categoria_id) => {
+const listarProdutos = async (categoria_id, produto_id) => {
   try {
     if (categoria_id) {
       const categoriaExiste = await knex('categorias').where({ id: categoria_id }).first()
@@ -12,6 +12,16 @@ const listarProdutos = async (categoria_id) => {
       const produtosPorCategoria = await knex('produtos').where({ categoria_id })
       mensagens.produtoValido.resposta = produtosPorCategoria
 
+      return mensagens.produtoValido
+    }
+
+    if (produto_id) {
+      const produto = await knex('produtos').where({id: produto_id}).first();
+      if (!produto) {
+        return mensagens.produtoInvalido
+      }
+
+      mensagens.produtoValido.resposta = produto
       return mensagens.produtoValido
     }
 

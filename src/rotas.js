@@ -32,6 +32,7 @@ rotas.put('/usuario', validarCorpoRequisicao(schemaUsuario), atualizar);
 
 rotas.post('/produto', validarCorpoRequisicao(schemaProduto), cadastraProduto)
 rotas.get('/produto', listaProdutos)
+rotas.get('/produto/:id', listaProdutos)
 rotas.post('/cliente', validarCorpoRequisicao(schemaCliente), postCliente);
 rotas.put('/cliente/:id', validarCorpoRequisicao(schemaCliente), putCliente);
 
