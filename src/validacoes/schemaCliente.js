@@ -4,16 +4,21 @@ const mensagens = require('../utilitarios/mensagens');
 const nomeObrigatorio = mensagens.campoObrigatorio('nome');
 const emailObrigatorio = mensagens.campoObrigatorio('email');
 const cpfObrigatorio = mensagens.campoObrigatorio('cpf');
+const nomeTipoString = mensagens.campoTipoString('nome');
+const emailTipoString = mensagens.campoTipoString('email');
+const cpfTipoString = mensagens.campoTipoString('cpf');
 
 const schemaCliente = joi.object({
     nome: joi.string().required().messages({
         'string.empty': nomeObrigatorio,
-        'any.required': nomeObrigatorio
+        'any.required': nomeObrigatorio,
+        'string.base': nomeTipoString
     }),
     email: joi.string().email().required().messages({
         'string.empty': emailObrigatorio,
         'string.email': mensagens.formatoEmailInvalido,
-        'any.required': emailObrigatorio
+        'any.required': emailObrigatorio,
+        'string.base': emailTipoString
     }),
     cpf: joi.string().max(14).required()
         .pattern(/[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}/).messages({

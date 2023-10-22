@@ -10,7 +10,7 @@ const usuarioNaEncontrado = {
 
 const loginInvalido = {
     status: 400,
-    resposta: 'Usuário e/ou senha inválidos.'
+    resposta: "E-mail ou senha estão inseridos incorretamente, faça as mudanças e tente novamente."
 }
 
 const servidor = {
@@ -43,9 +43,14 @@ const categoriaInvalida = {
     resposta: 'Categoria não encontrada.'
 }
 
+const produtoValido = {
+    status: 200,
+    resposta: ''
+}
+
 const produtoInvalido = {
     status: 404,
-    resposta: 'Produto não encontrada.'
+    resposta: 'Produto não encontrado.'
 }
 
 const cpfInvalido = {
@@ -67,6 +72,11 @@ const clienteInvalido = {
     resposta: 'Cliente não encontrado.'
 }
 
+const clientesSemCadastro = {
+    status: 404,
+    resposta: 'Não existem clientes cadastrados.'
+};
+
 const clienteJaCadastrado = {
     status: 404,
     resposta: 'Cliente já cadastrado.'
@@ -77,8 +87,17 @@ const clienteValido = {
     resposta: true
 }
 
+const usuarioValido = {
+    status: 200,
+    resposta: true
+}
+
 const campoObrigatorio = (campo) => {
     return `O campo ${campo} é obrigatório.`
+}
+
+const campoTipoString = (campo) => {
+    return `O campo ${campo} precisa ser do tipo string.`
 }
 
 const formatoEmailInvalido =
@@ -88,9 +107,11 @@ const formatoEmailInvalido =
 const formatoCpfInvalido =
     cpfInvalido.resposta
 
-
 const formatoCepInvalido =
     'O campo cep deve ter no máximo 9 dígitos.'
+
+const formatoSenhaInvalido =
+    'A campo senha precisa conter, no mínimo, 8 caracteres.'
 
 
 module.exports = {
@@ -105,13 +126,18 @@ module.exports = {
     atualizacaoDeUsuarioInvalida,
     categoriaInvalida,
     categoriaValida,
+    produtoValido,
     produtoInvalido,
     produtoExcluido,
     clienteInvalido,
     clienteJaCadastrado,
     clienteValido,
     campoObrigatorio,
+    campoTipoString,
     formatoCepInvalido,
     formatoCpfInvalido,
-    formatoEmailInvalido
+    formatoEmailInvalido,
+    clientesSemCadastro,
+    usuarioValido,
+    formatoSenhaInvalido
 }
