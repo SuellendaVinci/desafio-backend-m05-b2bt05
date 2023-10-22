@@ -6,7 +6,7 @@ const atualizaProduto = async (req, res) => {
     const { id } = req.params;
 
     try {
-        await atualizarProdutoProduto({
+        await atualizarProduto({
           id,
           descricao,
           quantidade_estoque,
@@ -16,7 +16,7 @@ const atualizaProduto = async (req, res) => {
     
         return res
           .status(201)
-          .json({ mensagem: "Produto cadastrado com sucesso!" });
+          .json({ mensagem: "Produto atualizado com sucesso!" });
       } catch (error) {
         return res.status(500).json(error.message);
       }

@@ -26,7 +26,7 @@ const atualizarProduto = async ({
       .update({ descricao, quantidade_estoque, valor, categoria_id })
       .where({ id });
 
-    res.status(204).send();
+    res.send({produto});
   } catch (error) {
     return `mensagem: ${error.message}`;
   }
