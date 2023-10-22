@@ -10,7 +10,7 @@ const usuarioNaEncontrado = {
 
 const loginInvalido = {
     status: 400,
-    resposta: 'Usuário e/ou senha inválidos.'
+    resposta: "E-mail ou senha estão inseridos incorretamente, faça as mudanças e tente novamente."
 }
 
 const servidor = {
@@ -83,8 +83,17 @@ const clienteValido = {
     resposta: true
 }
 
+const usuarioValido = {
+    status: 200,
+    resposta: true
+}
+
 const campoObrigatorio = (campo) => {
     return `O campo ${campo} é obrigatório.`
+}
+
+const campoTipoString = (campo) => {
+    return `O campo ${campo} precisa ser do tipo string.`
 }
 
 const formatoEmailInvalido =
@@ -94,9 +103,11 @@ const formatoEmailInvalido =
 const formatoCpfInvalido =
     'O campo cpf deve ter no máximo 14 dígitos.'
 
-
 const formatoCepInvalido =
     'O campo cep deve ter no máximo 9 dígitos.'
+
+const formatoSenhaInvalido =
+    'A campo senha precisa conter, no mínimo, 8 caracteres.'
 
 
 module.exports = {
@@ -117,8 +128,11 @@ module.exports = {
     clienteJaCadastrado,
     clienteValido,
     campoObrigatorio,
+    campoTipoString,
     formatoCepInvalido,
     formatoCpfInvalido,
     formatoEmailInvalido,
-    clientesSemCadastro
+    clientesSemCadastro,
+    usuarioValido,
+    formatoSenhaInvalido
 }

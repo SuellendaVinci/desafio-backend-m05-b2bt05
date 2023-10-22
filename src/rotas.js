@@ -11,7 +11,7 @@ const validaToken = require("./intermediarios/validaToken");
 
 const validarCorpoRequisicao = require("./intermediarios/validarCorpoRequisicao");
 const schemaUsuario = require("./validacoes/schemaUsuario");
-const schemaLogin = require("./validacoes/schemaLogin");
+const schemaLogin = require("./validacoes/schemaUsuarioLogin");
 const schemaProduto = require("./validacoes/schemaProduto");
 const cadastraProduto = require("./controladores/produtos/cadastrar");
 const schemaCliente = require("./validacoes/schemaCliente");
