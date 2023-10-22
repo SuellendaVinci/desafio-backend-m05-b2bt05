@@ -1,10 +1,11 @@
 const knex = require('../../bancoDeDados/conexao')
-const mensagens = require('../../../utilitarios/mensagens')
+const mensagens = require('../../../utilitarios/mensagens');
+const consultaProdutos = require('./consultaProduto');
 
 const excluirProduto = async (id) => {
   try {
-    const produto = await knex('produtos').where({ id }).first();
-    if (!produto) {
+    const produto = await consultaProdutos(id);
+    if (!produto[0]) {
       return mensagens.produtoInvalido
     }
 

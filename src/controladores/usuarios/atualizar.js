@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const { emailInvalido } = require("../../utilitarios/mensagens");
-const { validarUsuarioExiste, atualizarUsuario } = require("../../servicos/repositorios/atualizarUsuario");
+const { validarUsuarioExiste, atualizarUsuario } = require("../../servicos/repositorios/usuarios/atualizar");
 
 const atualizar = async (req, res) => {
   const { id } = req.usuario;

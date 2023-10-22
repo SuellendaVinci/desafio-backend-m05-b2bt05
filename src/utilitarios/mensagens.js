@@ -50,7 +50,7 @@ const produtoValido = {
 
 const produtoInvalido = {
     status: 404,
-    resposta: 'Produto não encontrada.'
+    resposta: 'Produto não encontrado.'
 }
 
 const cpfInvalido = {
