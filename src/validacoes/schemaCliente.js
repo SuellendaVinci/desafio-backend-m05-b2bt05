@@ -15,11 +15,13 @@ const schemaCliente = joi.object({
         'string.email': mensagens.formatoEmailInvalido,
         'any.required': emailObrigatorio
     }),
-    cpf: joi.string().max(14).required().messages({
-        'string.empty': cpfObrigatorio,
-        'any.required': cpfObrigatorio,
-        'string.length': mensagens.formatoCpfInvalido
-    }),
+    cpf: joi.string().max(14).required()
+        .pattern(/[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}/).messages({
+            'string.empty': cpfObrigatorio,
+            'string.pattern.base': mensagens.formatoCpfInvalido,
+            'any.required': cpfObrigatorio,
+            'string.limit': mensagens.formatoCpfInvalido
+        }),
     cep: joi.string().max(9).messages({
         'string.length': mensagens.formatoCepInvalido
     }),

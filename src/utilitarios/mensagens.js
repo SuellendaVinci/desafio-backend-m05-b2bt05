@@ -50,6 +50,10 @@ const produtoInvalido = {
 
 const cpfInvalido = {
     status: 404,
+    resposta: 'O campo cpf deve ser um número válido'
+}
+const cpfCadastrado = {
+    status: 404,
     resposta: 'O cpf informado já possui cadastro.'
 }
 
@@ -82,7 +86,7 @@ const formatoEmailInvalido =
 
 
 const formatoCpfInvalido =
-    'O campo cpf deve ter no máximo 14 dígitos.'
+    cpfInvalido.resposta
 
 
 const formatoCepInvalido =
@@ -92,6 +96,7 @@ const formatoCepInvalido =
 module.exports = {
     emailInvalido,
     cpfInvalido,
+    cpfCadastrado,
     usuarioNaEncontrado,
     loginInvalido,
     naoAutorizado,
