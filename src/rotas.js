@@ -13,12 +13,15 @@ const validarCorpoRequisicao = require("./intermediarios/validarCorpoRequisicao"
 const schemaUsuario = require("./validacoes/schemaUsuario");
 const schemaLogin = require("./validacoes/schemaUsuarioLogin");
 const schemaProduto = require("./validacoes/schemaProduto");
-const cadastraProduto = require("./controladores/produtos/cadastrar");
 const schemaCliente = require("./validacoes/schemaCliente");
 
 const postCliente = require("./controladores/cliente/cadastrar");
 const putCliente = require("./controladores/cliente/atualizar");
+
+const cadastraProduto = require("./controladores/produtos/cadastrar");
 const listaProdutos = require("./controladores/produtos/listar");
+const atualizaProduto = require("./controladores/produtos/atualizar");
+
 const rotas = express();
 
 rotas.get("/categoria", getCategorias);
@@ -31,6 +34,7 @@ rotas.get('/usuario', detalhar)
 rotas.put('/usuario', validarCorpoRequisicao(schemaUsuario), atualizar);
 
 rotas.post('/produto', validarCorpoRequisicao(schemaProduto), cadastraProduto)
+rotas.put('/produto/:id', validarCorpoRequisicao(schemaProduto), atualizaProduto)
 rotas.get('/produto', listaProdutos)
 rotas.get('/produto/:id', listaProdutos)
 
