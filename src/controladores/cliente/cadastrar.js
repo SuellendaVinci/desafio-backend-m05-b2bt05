@@ -10,6 +10,7 @@ const postCliente = async (req, res) => {
         return res.status(novoCliente.status).json(novoCliente.resposta);
 
     } catch (error) {
+
         return res.status(500).json(error.message);
     }
 }
