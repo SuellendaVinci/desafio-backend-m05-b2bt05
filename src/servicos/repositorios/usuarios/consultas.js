@@ -9,13 +9,3 @@ const validarUsuarioExiste = async (email) => {
 }
 
 module.exports = validarUsuarioExiste;
-
-// async function emailExistente(email) {
-//     try {
-//         const resultado = await knex("usuarios").where({ email }).first();
-
-//         return resultado;
-//     } catch (error) {
-//         return error.message;
-//     };
-// }
