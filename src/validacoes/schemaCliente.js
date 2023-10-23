@@ -27,8 +27,7 @@ const schemaCliente = joi.object({
         'any.required': emailObrigatorio,
         'string.base': emailTipoString
     }),
-    cpf: joi.string().max(14).required()
-        .pattern(/[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}/).messages({
+    cpf: joi.string().max(14).required().messages({
             'string.empty': cpfObrigatorio,
             'string.pattern.base': mensagens.formatoCpfInvalido,
             'any.required': cpfObrigatorio,
