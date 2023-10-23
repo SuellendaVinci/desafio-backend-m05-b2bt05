@@ -45,5 +45,4 @@ rotas.post('/cliente', validarCorpoRequisicao(schemaCliente), postCliente);
 rotas.put('/cliente/:id', validarCorpoRequisicao(schemaCliente), putCliente);
 rotas.get(['/cliente', '/cliente/:id'], listarClientes);
 
-
 module.exports = rotas;
