@@ -17,10 +17,12 @@ const schemaCliente = require("./validacoes/schemaCliente");
 
 const postCliente = require("./controladores/cliente/cadastrar");
 const putCliente = require("./controladores/cliente/atualizar");
+const listarClientes = require("./controladores/cliente/listar");
 
 const cadastraProduto = require("./controladores/produtos/cadastrar");
 const listaProdutos = require("./controladores/produtos/listar");
 const atualizaProduto = require("./controladores/produtos/atualizar");
+const excluiProduto = require("./controladores/produtos/excluir");
 
 const rotas = express();
 
@@ -37,8 +39,11 @@ rotas.post('/produto', validarCorpoRequisicao(schemaProduto), cadastraProduto)
 rotas.put('/produto/:id', validarCorpoRequisicao(schemaProduto), atualizaProduto)
 rotas.get('/produto', listaProdutos)
 rotas.get('/produto/:id', listaProdutos)
+rotas.delete('/produto/:id', excluiProduto)
 
 rotas.post('/cliente', validarCorpoRequisicao(schemaCliente), postCliente);
 rotas.put('/cliente/:id', validarCorpoRequisicao(schemaCliente), putCliente);
+rotas.get(['/cliente', '/cliente/:id'], listarClientes);
+
 
 module.exports = rotas;

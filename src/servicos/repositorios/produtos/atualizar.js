@@ -22,11 +22,11 @@ const atualizarProduto = async ({
       return res.status(400).json("Categoria inexistente.");
     }
 
-    const produto = await knex("produtos")
+    await knex("produtos")
       .update({ descricao, quantidade_estoque, valor, categoria_id })
       .where({ id });
 
-    res.send({produto});
+    res.status(204).send();
   } catch (error) {
     return `mensagem: ${error.message}`;
   }
