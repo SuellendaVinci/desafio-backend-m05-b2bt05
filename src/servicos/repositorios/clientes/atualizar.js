@@ -36,12 +36,11 @@ const atualizarCliente = async (clienteRequisicao) => {
         const clienteAtualizado = await knex('clientes').update(clienteRequisicao).where({ id: clienteRequisicao.id })
             .returning(['id', 'nome', 'cpf', 'email', 'cep', 'rua', 'numero', 'bairro', 'cidade', 'estado']);
 
-        mensagens.clienteValido.resposta = clienteAtualizado;
+        mensagens.cadastroValido.resposta = clienteAtualizado;
 
-        return mensagens.clienteValido;
+        return mensagens.cadastroValido;
 
     } catch (error) {
-
         return error.message;
     }
 }

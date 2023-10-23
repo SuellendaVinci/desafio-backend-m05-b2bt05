@@ -27,9 +27,9 @@ const cadastrarCliente = async (cliente) => {
         const novoUsuario = await knex('clientes').insert(cliente)
             .returning(['id', 'nome', 'cpf', 'email', 'cep', 'rua', 'numero', 'bairro', 'cidade', 'estado']);
 
-        mensagens.clienteValido.resposta = novoUsuario;
+        mensagens.cadastroValido.resposta = novoUsuario;
 
-        return mensagens.clienteValido;
+        return mensagens.cadastroValido;
 
     } catch (error) {
 
