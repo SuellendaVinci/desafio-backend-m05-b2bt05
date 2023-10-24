@@ -20,10 +20,9 @@ const schemaUsuario = joi.object({
     'any.required': emailObrigatorio,
     'string.base': emailTipoString
   }),
-  senha: joi.string().min(8).required().messages({
+  senha: joi.string().required().messages({
     'string.empty': senhaObrigatoria,
     'any.required': senhaObrigatoria,
-    'string.min': mensagens.formatoSenhaInvalido,
     'string.base': senhaTipoString
   }),
 });

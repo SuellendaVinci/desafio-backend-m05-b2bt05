@@ -3,7 +3,7 @@ const atualizacaoDeUsuarioInvalida = {
     resposta: ''
 }
 
-const atualizacaoDeUsuarioValida = {
+const atualizacaoValida = {
     status: 200,
     resposta: ''
 }
@@ -126,7 +126,7 @@ const usuarioValido = {
 module.exports = {
 
     atualizacaoDeUsuarioInvalida,
-    atualizacaoDeUsuarioValida,
+    atualizacaoValida,
     cadastroValido,
     campoObrigatorio,
     campoTipoString,
