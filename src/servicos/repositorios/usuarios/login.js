@@ -17,12 +17,8 @@ const efetuarLogin = async (email, senha) => {
 
         const token = jwt.sign({ id: usuarioEmail.id }, process.env.JWT_PASSWORD, { expiresIn: "1d" });
 
-        const { senha: _, ...usuario } = usuarioEmail;
-
-        usuarioValido.resposta = {
-            usuario,
-            token
-        }
+        usuarioValido.resposta = {token}
+        
         return usuarioValido;
 
     } catch (error) {

@@ -2,13 +2,15 @@ const jwt = require('jsonwebtoken');
 const knex = require('../servicos/bancoDeDados/conexao');
 
 const validaToken = async (req, res, next) => {
-  const { authorization } = req.headers;
+  const { autorizacao, authorization } = req.headers;
 
-  if (!authorization) {
+  if (!autorizacao && !authorization) {
     return res.status(401).json({ mensagem: 'Não autorizado.' });
   }
 
-  const token = authorization.split(' ')[1];
+  let token = "";
+
+  if (autorizacao) {token = autorizacao} else {token = authorization.split(' ')[1]}
 
   try {
     const { id } = jwt.verify(token, process.env.JWT_PASSWORD);

@@ -20,7 +20,7 @@ const efetuarCadastro = async (usuario) => {
             .insert(usuario)
             .returning(["id", "nome", "email"]);
 
-        cadastroValido.resposta = usuarioNovo
+        cadastroValido.resposta = usuarioNovo[0]
 
         return cadastroValido;
 

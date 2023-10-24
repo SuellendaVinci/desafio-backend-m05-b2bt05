@@ -1,16 +1,16 @@
 const mensagens = require('../../../utilitarios/mensagens');
-const validarCpf = require('../../../utilitarios/validarCpf');
+// const validarCpf = require('../../../utilitarios/validarCpf');
 const knex = require('../../bancoDeDados/conexao');
 const { consultarClientes } = require('./consultasClientes');
 
 const cadastrarCliente = async (cliente) => {
 
     try {
-        const formatoCpfValido = validarCpf(cliente.cpf);
+        // const formatoCpfValido = validarCpf(cliente.cpf);
 
-        if (!formatoCpfValido) return mensagens.cpfInvalido;
+        // if (!formatoCpfValido) return mensagens.cpfInvalido;
 
-        cliente.cpf = formatoCpfValido;
+        // cliente.cpf = formatoCpfValido;
 
         const dadosInvalidos = await consultarClientes(cliente);
 
@@ -22,12 +22,12 @@ const cadastrarCliente = async (cliente) => {
 
         }
 
-        cliente.cpf = formatoCpfValido;
+        // cliente.cpf = formatoCpfValido;
 
         const novoUsuario = await knex('clientes').insert(cliente)
             .returning(['id', 'nome', 'cpf', 'email', 'cep', 'rua', 'numero', 'bairro', 'cidade', 'estado']);
 
-        mensagens.cadastroValido.resposta = novoUsuario;
+        mensagens.cadastroValido.resposta = novoUsuario[0];
 
         return mensagens.cadastroValido;
 

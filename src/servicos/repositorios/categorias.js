@@ -17,7 +17,7 @@ const listarCategorias = async (id) => {
         return mensagem.categoriaValida;
 
     } catch (error) {
-
+        
         return error.message;
 
     }

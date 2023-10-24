@@ -1,18 +1,18 @@
 
-const { validator, cpf } = require('cpf-cnpj-validator')
-const Joi = require('joi').extend(validator)
+// const { validator, cpf } = require('cpf-cnpj-validator')
+// const Joi = require('joi').extend(validator)
 
-const cpfSchema = Joi.document().cpf();
+// const cpfSchema = Joi.document().cpf();
 
-const validarCpf = (documento) => {
-    let cpfValido = cpfSchema.validate(documento);
+// const validarCpf = (documento) => {
+//     let cpfValido = cpfSchema.validate(documento);
 
-    if (cpfValido.error) {
-        return false
-    }
-    cpfValido = cpf.format(cpfValido.value)
+//     if (cpfValido.error) {
+//         return false
+//     }
+//     cpfValido = cpf.format(cpfValido.value)
 
-    return cpfValido;
-}
+//     return cpfValido;
+// }
 
-module.exports = validarCpf;
+// module.exports = validarCpf;
