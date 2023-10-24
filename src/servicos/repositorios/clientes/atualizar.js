@@ -1,5 +1,5 @@
 const mensagens = require('../../../utilitarios/mensagens');
-const validarCpf = require('../../../utilitarios/validarCpf');
+// const validarCpf = require('../../../utilitarios/validarCpf');
 const knex = require('../../bancoDeDados/conexao');
 const { consultarClientes } = require('./consultasClientes');
 
@@ -11,11 +11,11 @@ const atualizarCliente = async (clienteRequisicao) => {
 
         if (clienteExiste.length === 0) return mensagens.clienteInvalido;
 
-        const formatoCpfValido = validarCpf(clienteRequisicao.cpf);
+        // const formatoCpfValido = validarCpf(clienteRequisicao.cpf);
 
-        if (!formatoCpfValido) return mensagens.cpfInvalido;
+        // if (!formatoCpfValido) return mensagens.cpfInvalido;
 
-        clienteRequisicao.cpf = formatoCpfValido;
+        // clienteRequisicao.cpf = formatoCpfValido;
 
         const consultaClientes = await consultarClientes(clienteRequisicao);
 
@@ -36,12 +36,11 @@ const atualizarCliente = async (clienteRequisicao) => {
         const clienteAtualizado = await knex('clientes').update(clienteRequisicao).where({ id: clienteRequisicao.id })
             .returning(['id', 'nome', 'cpf', 'email', 'cep', 'rua', 'numero', 'bairro', 'cidade', 'estado']);
 
-        mensagens.clienteValido.resposta = clienteAtualizado;
+        mensagens.atualizacaoValida.resposta = clienteAtualizado;
 
-        return mensagens.clienteValido;
+        return mensagens.atualizacaoValida;
 
     } catch (error) {
-
         return error.message;
     }
 }

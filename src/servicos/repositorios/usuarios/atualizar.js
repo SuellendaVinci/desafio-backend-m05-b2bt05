@@ -9,8 +9,8 @@ const atualizarUsuario = async (id, nome, email, senha) => {
       .where({ id })
       .returning(["id", "nome", "email"]);
 
-    mensagens.atualizacaoDeUsuarioValida.resposta = usuario
-    return mensagens.atualizacaoDeUsuarioValida
+    mensagens.atualizacaoValida.resposta = usuario[0]
+    return mensagens.atualizacaoValida
 
   } catch (error) {
 

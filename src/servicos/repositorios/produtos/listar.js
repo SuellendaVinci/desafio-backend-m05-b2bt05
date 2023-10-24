@@ -7,7 +7,7 @@ const listarProdutos = async (categoria_id, produto_id) => {
   try {
     if (categoria_id) {
       const categoriaExiste = await listarCategorias(categoria_id);
-      if (!categoriaExiste[0]) {
+      if (!categoriaExiste.resposta[0]) {
         return mensagens.categoriaInvalida
       }
 

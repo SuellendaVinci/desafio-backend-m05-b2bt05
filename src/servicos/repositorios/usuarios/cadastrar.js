@@ -1,4 +1,4 @@
-const { emailInvalido, usuarioValido } = require("../../../utilitarios/mensagens");
+const { emailInvalido, cadastroValido } = require("../../../utilitarios/mensagens");
 const { criptografarSenha } = require("../../../utilitarios/utilitarios");
 const knex = require("../../bancoDeDados/conexao");
 const validarUsuarioExiste = require("./consultas");
@@ -20,9 +20,9 @@ const efetuarCadastro = async (usuario) => {
             .insert(usuario)
             .returning(["id", "nome", "email"]);
 
-        usuarioValido.resposta = usuarioNovo
+        cadastroValido.resposta = usuarioNovo[0]
 
-        return usuarioValido;
+        return cadastroValido;
 
     } catch (error) {
         console.error(error.message)
