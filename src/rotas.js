@@ -24,6 +24,8 @@ const listaProdutos = require("./controladores/produtos/listar");
 const atualizaProduto = require("./controladores/produtos/atualizar");
 const excluiProduto = require("./controladores/produtos/excluir");
 
+const listar = require("./controladores/pedidos/listar");
+
 const rotas = express();
 
 rotas.get("/categoria", getCategorias);
@@ -44,5 +46,7 @@ rotas.delete('/produto/:id', excluiProduto)
 rotas.post('/cliente', validarCorpoRequisicao(schemaCliente), postCliente);
 rotas.put('/cliente/:id', validarCorpoRequisicao(schemaCliente), putCliente);
 rotas.get(['/cliente', '/cliente/:id'], listarClientes);
+
+rotas.get(['/pedido', '/pedido/:id'], listar);
 
 module.exports = rotas;

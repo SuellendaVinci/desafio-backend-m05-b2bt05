@@ -8,6 +8,8 @@ const getCategorias = async (req, res) => {
 
         const categoria = await listarCategorias(id ? id : "");
 
+        console.log(categoria)
+
         return res.status(categoria.status).json(categoria.resposta);
 
     } catch (error) {
