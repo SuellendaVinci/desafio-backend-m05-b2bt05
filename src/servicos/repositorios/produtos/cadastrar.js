@@ -6,7 +6,7 @@ const cadastrarProduto = async ({descricao, quantidade_estoque, valor, categoria
       .where("id", categoria_id)
       .first();
     if (!categoriaExiste) {
-      return "A categoria informada não existe.";
+      throw new Error("A categoria informada não existe.");
     }
 
     await knex("produtos").insert({
