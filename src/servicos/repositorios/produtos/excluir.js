@@ -2,6 +2,7 @@ const knex = require('../../bancoDeDados/conexao')
 const mensagens = require('../../../utilitarios/mensagens');
 const consultaProdutos = require('./consultaProduto');
 const { consultarPedidos } = require('../pedidos/consultas');
+const { deletarImagem } = require('../../../utilitarios/imagem');
 
 const excluirProduto = async (id) => {
   try {
@@ -17,7 +18,15 @@ const excluirProduto = async (id) => {
       
     }
 
-    await knex('produtos').del().where({ id })
+    const imagem = produto[0].produto_imagem;
+
+    await knex('produtos').del().where({ id });
+
+    if (imagem) {
+      const path = imagem.slice(imagem.indexOf("produtos"));
+
+      await deletarImagem(path)
+    }
 
     return mensagens.produtoExcluido
   } catch (error) {
