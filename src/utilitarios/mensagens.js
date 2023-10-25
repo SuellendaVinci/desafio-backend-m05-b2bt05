@@ -106,6 +106,11 @@ const produtoExcluido = {
     resposta: { 'mensagem': 'Produto excluído com sucesso.' }
 }
 
+const produtoNaoCadastrado = {
+    status: 400,
+    resposta: { 'mensagem': 'Produto não cadastrado.' }
+}
+
 const produtoInvalido = {
     status: 404,
     resposta: { 'mensagem': 'Produto não encontrado.' }
@@ -163,6 +168,7 @@ module.exports = {
     naoAutorizado,
     produtoExcluido,
     produtoInvalido,
+    produtoNaoCadastrado,
     produtoValido,
     produtoEmUso,
     servidor,

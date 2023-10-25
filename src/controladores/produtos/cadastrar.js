@@ -5,7 +5,7 @@ const cadastraProduto = async (req, res) => {
   const { file: imagem } = req;
   const produto = { descricao, quantidade_estoque, valor, categoria_id } = req.body;
 
-  if (imagem) produto.produto_imagem = imagem;
+  if (imagem) produto.produto = imagem;
 
   try {
 

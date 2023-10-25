@@ -1,32 +1,36 @@
 const knex = require("../../bancoDeDados/conexao");
 const { salvarImagem } = require("../../../utilitarios/imagem");
 const { listarCategorias } = require("../categorias");
-const { cadastroValido, categoriaInvalida, cadastroInvalido } = require("../../../utilitarios/mensagens");
+const { cadastroValido, categoriaInvalida, cadastroInvalido, produtoNaoCadastrado } = require("../../../utilitarios/mensagens");
 
 const cadastrarProduto = async (produto) => {
 
   try {
 
-    const { produto_imagem: imagem } = produto;
+    const { produto: imagem, ...produtoSemImagem } = produto;
 
     const categoriaExiste = await listarCategorias(produto.categoria_id);
 
     if (!categoriaExiste.resposta[0]) return categoriaInvalida;
 
+    const novoProduto = await knex("produtos").insert(produtoSemImagem).returning('*');
+
+    if (!novoProduto[0]) return produtoNaoCadastrado
+
     if (imagem) {
 
-      const { max: ultimoId } = await knex('produtos').max('id').first();
-
       const objImagem = await salvarImagem(
-        `produtos/${ultimoId + 1}/${imagem.originalname}`,
+        `produtos/${novoProduto[0].id}/${imagem.originalname}`,
         imagem.buffer,
         imagem.mimetype
       )
-      produto.produto_imagem = objImagem;
 
+      await knex("produtos")
+        .update({ produto_imagem: objImagem })
+        .where({ id: novoProduto[0].id });
+
+      novoProduto[0].produto_imagem = objImagem;
     }
-
-    const novoProduto = await knex("produtos").insert(produto).returning('*');
 
     cadastroValido.resposta = novoProduto;
 
