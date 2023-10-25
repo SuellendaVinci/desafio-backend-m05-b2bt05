@@ -11,7 +11,7 @@ const atualizarProduto = async ({
     const produtoExistente = await knex("produtos").where({ id }).first();
 
     if (!produtoExistente) {
-      return res.status(400).json("Produto inexistente");
+      throw new Error("Produto inexistente");
     }
 
     const categoriaExistente = await knex("categorias")
@@ -19,7 +19,7 @@ const atualizarProduto = async ({
       .first();
 
     if (!categoriaExistente) {
-      return res.status(400).json("Categoria inexistente.");
+      throw new Error("Categoria inexistente.");
     }
 
     await knex("produtos")
