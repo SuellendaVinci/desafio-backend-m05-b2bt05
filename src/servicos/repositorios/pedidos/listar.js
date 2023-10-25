@@ -1,7 +1,5 @@
 const knex = require('../../bancoDeDados/conexao');
-const { clienteValido, clienteInvalido, clientesSemCadastro } = require("../../../utilitarios/mensagens");
 const { consultarPedidos } = require('./consultas');
-
 
 const listarPedidos = async (id) => {
 
