@@ -17,7 +17,7 @@ const efetuarLogin = async (email, senha) => {
 
         const token = jwt.sign({ id: usuarioEmail.id }, process.env.JWT_PASSWORD, { expiresIn: "1d" });
 
-        usuarioValido.resposta = {token}
+        usuarioValido.resposta = {autorizacao: token}
         
         return usuarioValido;
 
