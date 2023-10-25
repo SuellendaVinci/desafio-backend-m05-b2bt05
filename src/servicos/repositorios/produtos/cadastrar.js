@@ -6,6 +6,7 @@ const { cadastroValido, categoriaInvalida, cadastroInvalido } = require("../../.
 const cadastrarProduto = async (produto) => {
 
   try {
+
     const { produto_imagem: imagem } = produto;
 
     const categoriaExiste = await listarCategorias(produto.categoria_id);
@@ -22,6 +23,7 @@ const cadastrarProduto = async (produto) => {
         imagem.mimetype
       )
       produto.produto_imagem = objImagem;
+
     }
 
     const novoProduto = await knex("produtos").insert(produto).returning('*');

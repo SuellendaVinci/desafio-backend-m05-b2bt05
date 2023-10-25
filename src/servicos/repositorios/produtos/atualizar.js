@@ -8,12 +8,6 @@ const atualizarProduto = async (produto) => {
 
   try {
 
-    const produtoExistente = await consultaProdutos(produto.id);
-
-    if (produtoExistente.length === 0) {
-      return produtoInvalido
-    }
-
     const categoriaExistente = await listarCategorias(produto.categoria_id);
 
     if (!categoriaExistente.resposta[0]) return categoriaInvalida;

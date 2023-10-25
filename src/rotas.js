@@ -23,6 +23,8 @@ const cadastraProduto = require("./controladores/produtos/cadastrar");
 const listaProdutos = require("./controladores/produtos/listar");
 const atualizaProduto = require("./controladores/produtos/atualizar");
 const excluiProduto = require("./controladores/produtos/excluir");
+const schemaPedido = require("./validacoes/schemaPedido");
+const cadastraPedido = require("./controladores/pedidos/cadastrar");
 
 const listar = require("./controladores/pedidos/listar");
 
@@ -48,6 +50,8 @@ rotas.delete('/produto/:id', excluiProduto)
 rotas.post('/cliente', validarCorpoRequisicao(schemaCliente), cadastraCliente);
 rotas.put('/cliente/:id', validarCorpoRequisicao(schemaCliente), atualizaCliente);
 rotas.get(['/cliente', '/cliente/:id'], listarClientes);
+
+rotas.post('/pedidos', validarCorpoRequisicao(schemaPedido), cadastraPedido)
 
 rotas.get(['/pedido', '/pedido/:id'], listar);
 
