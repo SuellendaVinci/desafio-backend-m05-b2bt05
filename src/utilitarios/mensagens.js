@@ -116,6 +116,11 @@ const produtoValido = {
     resposta: ''
 }
 
+const produtoEmUso = {
+    status: 409,
+    resposta: { 'mensagem': 'Produto em uso.' }
+}
+
 const servidor = {
     status: 500,
     resposta: { 'mensagem': 'Erro interno do servidor.' }
@@ -159,6 +164,7 @@ module.exports = {
     produtoExcluido,
     produtoInvalido,
     produtoValido,
+    produtoEmUso,
     servidor,
     usuarioNaEncontrado,
     usuarioValido
