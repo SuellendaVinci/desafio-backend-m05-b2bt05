@@ -1,4 +1,4 @@
-const atualizacaoDeUsuarioInvalida = {
+const atualizacaoInvalida = {
     status: 400,
     resposta: ''
 }
@@ -13,12 +13,20 @@ const cadastroValido = {
     resposta: true
 }
 
+const cadastroInvalido = {
+    status: 400,
+    resposta: ''
+}
+
 const campoObrigatorio = (campo) => {
     return `O campo ${campo} é obrigatório.`
 }
 
 const campoTipoString = (campo) => {
     return `O campo ${campo} precisa ser do tipo string.`
+}
+const campoTipoNumber = (campo) => {
+    return `O campo ${campo} precisa ser um número inteiro válido e positivo.`
 }
 
 const categoriaInvalida = {
@@ -125,11 +133,13 @@ const usuarioValido = {
 
 module.exports = {
 
-    atualizacaoDeUsuarioInvalida,
+    atualizacaoInvalida,
     atualizacaoValida,
     cadastroValido,
+    cadastroInvalido,
     campoObrigatorio,
     campoTipoString,
+    campoTipoNumber,
     categoriaInvalida,
     categoriaValida,
     cepInValido,

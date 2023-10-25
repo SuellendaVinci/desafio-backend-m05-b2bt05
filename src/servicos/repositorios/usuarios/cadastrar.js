@@ -25,7 +25,7 @@ const efetuarCadastro = async (usuario) => {
         return cadastroValido;
 
     } catch (error) {
-        console.error(error.message)
+
         return error.message;
     }
 }

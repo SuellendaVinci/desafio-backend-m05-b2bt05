@@ -1,6 +1,6 @@
 const { atualizarCliente } = require("../../servicos/repositorios/clientes/atualizar");
 
-const putCliente = async (req, res) => {
+const atualizaCliente = async (req, res) => {
     const { id } = req.params;
     const clienteRequisicao = { nome, email, cpf, cep, rua, numero, bairro, cidade, estado } = req.body;
 
@@ -17,4 +17,4 @@ const putCliente = async (req, res) => {
     }
 }
 
-module.exports = putCliente; 
+module.exports = atualizaCliente; 

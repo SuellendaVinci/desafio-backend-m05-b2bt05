@@ -1,14 +1,12 @@
 const { listarCategorias } = require('../../servicos/repositorios/categorias');
 
-const getCategorias = async (req, res) => {
+const listaCategorias = async (req, res) => {
 
     const { id } = req.params;
 
     try {
 
         const categoria = await listarCategorias(id ? id : "");
-
-        console.log(categoria)
 
         return res.status(categoria.status).json(categoria.resposta);
 
@@ -20,4 +18,4 @@ const getCategorias = async (req, res) => {
 
 }
 
-module.exports = getCategorias;
+module.exports = listaCategorias;

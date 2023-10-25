@@ -1,19 +1,20 @@
 const cadastrarProduto = require("../../servicos/repositorios/produtos/cadastrar");
 
 const cadastraProduto = async (req, res) => {
-  const { descricao, quantidade_estoque, valor, categoria_id } = req.body;
+
+  const { file: imagem } = req;
+  const produto = { descricao, quantidade_estoque, valor, categoria_id } = req.body;
+
+  if (imagem) produto.produto_imagem = imagem;
 
   try {
-    await cadastrarProduto({
-      descricao,
-      quantidade_estoque,
-      valor,
-      categoria_id,
-    });
+
+    const novoProduto = await cadastrarProduto(produto);
 
     return res
-      .status(201)
-      .json({ mensagem: "Produto cadastrado com sucesso!" });
+      .status(novoProduto.status)
+      .json(novoProduto.resposta);
+
   } catch (error) {
     return res.status(500).json(error.message);
   }
