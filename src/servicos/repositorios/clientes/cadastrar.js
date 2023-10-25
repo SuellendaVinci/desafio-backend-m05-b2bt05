@@ -24,10 +24,10 @@ const cadastrarCliente = async (cliente) => {
 
         // cliente.cpf = formatoCpfValido;
 
-        const novoUsuario = await knex('clientes').insert(cliente)
+        const novoCliente = await knex('clientes').insert(cliente)
             .returning(['id', 'nome', 'cpf', 'email', 'cep', 'rua', 'numero', 'bairro', 'cidade', 'estado']);
 
-        mensagens.cadastroValido.resposta = novoUsuario[0];
+        mensagens.cadastroValido.resposta = novoCliente[0];
 
         return mensagens.cadastroValido;
 

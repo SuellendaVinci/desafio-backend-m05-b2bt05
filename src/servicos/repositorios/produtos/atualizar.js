@@ -1,34 +1,53 @@
 const knex = require("../../bancoDeDados/conexao");
+const consultaProdutos = require("./consultaProduto");
+const { listarCategorias } = require("../categorias");
+const { deletarImagem, salvarImagem } = require("../../../utilitarios/imagem");
+const { atualizacaoValida, atualizacaoInvalida, categoriaInvalida, produtoInvalido } = require("../../../utilitarios/mensagens");
 
-const atualizarProduto = async ({
-  id,
-  descricao,
-  quantidade_estoque,
-  valor,
-  categoria_id,
-}) => {
+const atualizarProduto = async (produto) => {
+
   try {
-    const produtoExistente = await knex("produtos").where({ id }).first();
 
-    if (!produtoExistente) {
-      return res.status(400).json("Produto inexistente");
+    const produtoExistente = await consultaProdutos(produto.id);
+
+    if (produtoExistente.length === 0) {
+      return produtoInvalido
     }
 
-    const categoriaExistente = await knex("categorias")
-      .where({ id: categoria_id })
-      .first();
+    const categoriaExistente = await listarCategorias(produto.categoria_id);
 
-    if (!categoriaExistente) {
-      return res.status(400).json("Categoria inexistente.");
+    if (!categoriaExistente.resposta[0]) return categoriaInvalida;
+
+    if (produto.produto_imagem) {
+
+      const { produto_imagem: imagem } = produto;
+
+      const path = produtoExistente[0].produto_imagem.slice(produtoExistente[0].produto_imagem.indexOf("produtos"));
+
+      await deletarImagem(path);
+
+      const objImagem = await salvarImagem(
+        `produtos/${produto.id}/${imagem.originalname}`,
+        imagem.buffer,
+        imagem.mimetype
+      )
+
+      produto.produto_imagem = objImagem;
+
     }
 
-    await knex("produtos")
-      .update({ descricao, quantidade_estoque, valor, categoria_id })
-      .where({ id });
+    const produtoAtualizado = await knex("produtos")
+      .update(produto)
+      .where({ id: produto.id }).returning("*");
 
-    res.status(204).send();
+    atualizacaoValida.resposta = produtoAtualizado;
+
+    return atualizacaoValida;
+
   } catch (error) {
-    return `mensagem: ${error.message}`;
+    atualizacaoInvalida.resposta = error.message
+
+    return atualizacaoInvalida
   }
 };
 

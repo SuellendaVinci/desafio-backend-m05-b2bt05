@@ -1,24 +1,38 @@
 const knex = require("../../bancoDeDados/conexao");
+const { salvarImagem } = require("../../../utilitarios/imagem");
+const { listarCategorias } = require("../categorias");
+const { cadastroValido, categoriaInvalida, cadastroInvalido } = require("../../../utilitarios/mensagens");
 
-const cadastrarProduto = async ({descricao, quantidade_estoque, valor, categoria_id}) => {
+const cadastrarProduto = async (produto) => {
+
   try {
-    const categoriaExiste = await knex("categorias")
-      .where("id", categoria_id)
-      .first();
-    if (!categoriaExiste) {
-      return "A categoria informada não existe.";
+    const { produto_imagem: imagem } = produto;
+
+    const categoriaExiste = await listarCategorias(produto.categoria_id);
+
+    if (!categoriaExiste.resposta[0]) return categoriaInvalida;
+
+    if (imagem) {
+
+      const { max: ultimoId } = await knex('produtos').max('id').first();
+
+      const objImagem = await salvarImagem(
+        `produtos/${ultimoId + 1}/${imagem.originalname}`,
+        imagem.buffer,
+        imagem.mimetype
+      )
+      produto.produto_imagem = objImagem;
     }
 
-    await knex("produtos").insert({
-      descricao,
-      quantidade_estoque,
-      valor,
-      categoria_id,
-    });
+    const novoProduto = await knex("produtos").insert(produto).returning('*');
 
-    return "Produto cadastrado com sucesso.";
+    cadastroValido.resposta = novoProduto;
+
+    return cadastroValido
+
   } catch (error) {
-    return `mensagem: ${error.message}`;
+    cadastroInvalido.resposta = error.message
+    return cadastroInvalido;
   }
 };
 

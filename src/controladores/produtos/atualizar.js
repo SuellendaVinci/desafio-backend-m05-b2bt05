@@ -2,28 +2,27 @@ const atualizarProduto = require("../../servicos/repositorios/produtos/atualizar
 
 const atualizaProduto = async (req, res) => {
 
-    const { descricao, quantidade_estoque, valor, categoria_id } = req.body;
-    const { id } = req.params;
+  const produtoRequisicao = { descricao, quantidade_estoque, valor, categoria_id } = req.body;
+  const { id } = req.params;
+  const { file: imagem } = req;
 
-    try {
-        await atualizarProduto({
-          id,
-          descricao,
-          quantidade_estoque,
-          valor,
-          categoria_id,
-        });
-    
-        return res
-          .status(201)
-          .json({ mensagem: "Produto atualizado com sucesso!" });
-      } catch (error) {
-        return res.status(500).json(error.message);
-      }
+  produtoRequisicao.id = Number(id)
+
+  if (imagem) produtoRequisicao.produto_imagem = imagem;
+
+  try {
+    const produtoAtualizado = await atualizarProduto(produtoRequisicao);
+
+    return res
+      .status(produtoAtualizado.status)
+      .json(produtoAtualizado.resposta);
+
+  } catch (error) {
+    return res.status(500).json(error.message);
+  }
 
 }
 
 module.exports = atualizaProduto;
 
 
-    

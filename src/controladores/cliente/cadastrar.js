@@ -1,6 +1,6 @@
 const { cadastrarCliente } = require("../../servicos/repositorios/clientes/cadastrar");
 
-const postCliente = async (req, res) => {
+const cadastraCliente = async (req, res) => {
     const cliente =
         { nome, email, cpf, cep, rua, numero, bairro, cidade, estado } = req.body;
 
@@ -15,4 +15,4 @@ const postCliente = async (req, res) => {
     }
 }
 
-module.exports = postCliente; 
+module.exports = cadastraCliente; 

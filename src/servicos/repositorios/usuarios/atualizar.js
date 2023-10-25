@@ -14,8 +14,8 @@ const atualizarUsuario = async (id, nome, email, senha) => {
 
   } catch (error) {
 
-    mensagens.atualizacaoDeUsuarioInvalida.resposta = error.message
-    return mensagens.atualizacaoDeUsuarioInvalida
+    mensagens.atualizacaoInvalida.resposta = error.message
+    return mensagens.atualizacaoInvalida
 
   }
 }
