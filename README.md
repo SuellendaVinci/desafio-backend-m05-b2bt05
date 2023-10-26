@@ -56,7 +56,7 @@ O Projeto de uma API para um ponto de venda (PDV) tem como ideia principal o arm
 </div>
 <hr>
 
- Git, JavaScript, NodeJS, Express, Nodemon, PostgreSQL, JsonWebToken
+ Git, JavaScript, NodeJS, Express, Nodemon, PostgreSQL, JsonWebToken, Knex, Bcrypt 
 
 ## 👷 Como Executar o Projeto
 
