@@ -14,6 +14,8 @@
 
 O Projeto é uma API REST para um PDV (Ponto de Venda/ Frente de Caixa) desenvolvida para uso comercial. Ela permite cadastro de usuários, produtos, clientes e pedidos dos clientes.
 
+(Desafio final do último módulo do curso de desenvolvimento web focado em backend da escola de programação Cubos Academy)
+
 ## 🛠️ Funcionalidades
 
 - Listar a categoria dos produtos
@@ -38,7 +40,7 @@ O Projeto é uma API REST para um PDV (Ponto de Venda/ Frente de Caixa) desenvol
 
 ## 💡 Ideia do Projeto
 
-O Projeto de uma API para um ponto de venda (PDV) tem como ideia principal o armazenamento dos dados de um comércio com fim de organizá-los em um banco de dados de forma segura e garantir assim uma boa gestão do seu negócio.
+O Projeto de uma API para um ponto de venda (PDV) tem como ideia principal o armazenamento de dados de um comércio com fim de organizá-los em um banco de dados de forma segura e garantir assim uma boa gestão do seu negócio.
 
 ## 🛠 Tecnologias Utilizadas
 
@@ -48,7 +50,7 @@ O Projeto de uma API para um ponto de venda (PDV) tem como ideia principal o arm
 <img align="center" alt="Express" width="40" src="https://img.icons8.com/officexs/16/000000/express-js.png" alt="express-js" >
 <img align="center" alt="Nodemon" width="60" src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_nodemon_icon_130299.png" alt="express-js" >
 <img align="center" alt="PostgreSQL" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain-wordmark.svg" >
-<img align="center" alt="PostgreSQL" width="120" src="https://cdn-images-1.medium.com/v2/resize:fit:992/1*Nnu-OC1BbymgvpOiY9nvwg.png" >
+<img align="center" alt="JsonWebToken" width="120" src="https://cdn-images-1.medium.com/v2/resize:fit:992/1*Nnu-OC1BbymgvpOiY9nvwg.png" >
 
 </div>
 <hr>
