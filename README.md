@@ -1,544 +1,199 @@
-![](https://i.imgur.com/xG74tOh.png)
+<div align="center" style="background-color: ; padding: px;">
+<a href="https://s4.aconvert.com/convert/p3r68-cdx67/avf4u-v5mk5.jpg"><img src="https://s4.aconvert.com/convert/p3r68-cdx67/aj6hp-1ay7n.jpg" alt="Imagem da nossa equipe: Ouroboros, qualidade contínua para o seu PDV" border="0" /></a>
+</div>
 
-# Desafio Módulo 5 - Backend
+<br>
+ 
+<div align="center" style="background-color: ; padding: px;">
+  <h1 style="color: #bdefaf;">PROJETO PDV - PONTO DE VENDA</h1>
+</div>
 
-## Como entregar?
+<br>
 
-- [ ] Crie um repositório público no GitHub de algum membro de equipe
-- [ ] Adicione os membros da equipe no repositório
-- [ ] Enviei o link desse repositório na plataforma
+## 💻 Sobre o projeto
 
-## Descrição do desafio
+O Projeto é uma API REST para um PDV (Ponto de Venda/ Frente de Caixa) desenvolvida para uso comercial. Ela permite cadastro de usuários, produtos, clientes e pedidos dos clientes.
 
-Seja bem vindo(a) ao desafio do módulo 5.
+## 🛠️ Funcionalidades
 
-Sua tarefa como desenvolvedor(a) será criar uma API para um PDV (Frente de Caixa). Esse será um projeto piloto, ou seja, no futuro outras funcionalidades serão implementadas.
+- Listar a categoria dos produtos
+- Cadastrar usuários
+- Realizar login do usuário com autenticação segura
+- Detalhar perfil do usuário logado
+- Editar/Atualizar perfil do usuário logado
+- Cadastrar Produto
+- Editar/Atualizar dados do produto
+- Listar Produtos
+- Detalhar Produto
+- Excluir Produto por ID
+- Cadastrar Cliente
+- Editar dados do cliente
+- Listar Clientes
+- Detalhar Cliente
+- Cadastrar Pedido
+- Listar Pedidos
+- Aplicar validação na exclusão de produto
+- Aprimorar cadastro/atualização de produto
+- Aprimorar exclusão de produto
 
-**Importante 1: Sempre que a validação de uma requisição falhar, responda com código de erro e mensagem adequada à situação, ok?**
+## 💡 Ideia do Projeto
 
-**Importante 2: Para endpoints de cadastro/atualização os objetos de requisição devem conter as propriedades equivalentes as colunas das tabelas.**
+O Projeto de uma API para um ponto de venda (PDV) tem como ideia principal o armazenamento dos dados de um comércio com fim de organizá-los em um banco de dados de forma segura e garantir assim uma boa gestão do seu negócio.
 
-**Exemplo:**
+## 🛠 Tecnologias Utilizadas
 
-```javascript
-// Corpo da requisição para cadastro de usuário (body)
-{
-    "nome": "José",
-    "email": "jose@email.com",
-    "senha": "jose"
-}
+ <div style="display: inline_block">
+
+<img align="center" alt="Node.JS" width="60"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" > 
+<img align="center" alt="Express" width="40" src="https://img.icons8.com/officexs/16/000000/express-js.png" alt="express-js" >
+<img align="center" alt="Nodemon" width="60" src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_nodemon_icon_130299.png" alt="express-js" >
+<img align="center" alt="PostgreSQL" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain-wordmark.svg" >
+<img align="center" alt="PostgreSQL" width="120" src="https://cdn-images-1.medium.com/v2/resize:fit:992/1*Nnu-OC1BbymgvpOiY9nvwg.png" >
+
+</div>
+<hr>
+
+ NodeJS, Express, Nodemon, PostgreSQL, JsonWebToken
+
+## 👷 Como Executar o Projeto
+
+Pré-requisitos
+Node.js instalado
+PostgreSQL instalado e configurado
+
+Para executar o Projeto PDV em sua máquina local, siga as seguintes etapas abaixo:
+
+Passos:
+
+1. Faça um fork do projeto
+
+2. Clone o repositório forked para sua máquina local
+
+3. Para rodar este projeto você precisa executar este comando:
+
+```shell
+npm init -y
+```
+4. Instalar as dependêcias de desenvolvimento
+
+```shell
+npm install
+```
+5. Rode o projeto toda vez com:
+
+```shell
+npm run start
 ```
 
-**ATENÇÃO: Todos os endpoints deverão atender os requisitos citados acima.**
+A API estará disponível em http://localhost:3333.
 
-## **Banco de dados**
+## 🖼 Use o Insomnia ou outro programa para testar as rotas
 
-Você precisa criar um Banco de Dados PostgreSQL chamado `pdv`.
+- Apenas alguns exemplos:
 
-**IMPORTANTE: Deverá ser criado no projeto o arquivo SQL que deverá ser o script contendo os comandos de criação das tabelas respeitando os nomes das tabelas e colunas respectivamente, além de, conter os comandos para a inserção das categorias que devem ser previamente cadastradas (estão citadas na 1ª Sprint no item Listar Categorias).**
 
-## **Requisitos obrigatórios**
 
-- A API a ser criada deverá acessar o banco de dados a ser criado `pdv` para persistir e manipular os dados de categorias, clientes, pedidos, produtos e usuários utilizados pela aplicação.
-- O campo id das tabelas no banco de dados deve ser auto incremento, chave primária e não deve permitir edição uma vez criado.
-- Qualquer valor monetário deverá ser representado em centavos (Ex.: R$ 10,00 reais = 1000)
 
-## **Status Codes**
 
-Abaixo, listamos os possíveis **_status codes_** esperados como resposta da API.
+## 🌠 AGRADECIMENTOS 
 
-```javascript
-// 200 (OK) = requisição bem sucedida
-// 201 (Created) = requisição bem sucedida e algo foi criado
-// 204 (No Content) = requisição bem sucedida, sem conteúdo no corpo da resposta
-// 400 (Bad Request) = o servidor não entendeu a requisição pois está com uma sintaxe/formato inválido
-// 401 (Unauthorized) = o usuário não está autenticado (logado)
-// 403 (Forbidden) = o usuário não tem permissão de acessar o recurso solicitado
-// 404 (Not Found) = o servidor não pode encontrar o recurso solicitado
-// 500 (Internal Server Error) = erro inesperado do servidor
-```
+<div align=center>
 
-<details>
-<summary>1ª Sprint</summary>
-<br>
+<table style="width:100%">
 
-<details>
-<summary><b>Banco de Dados</b></summary>
-<br>
+  <tr align=center>
+    <th><strong>iFood</strong></th>
+    <th><strong>Cubos Academy</strong></th>
+  </tr>
 
-Crie as seguintes tabelas e colunas abaixo:
+  <tr align=center>
+    <td>
+      <a href="https://www.ifood.com.br/">
+        <img width="200" src="https://user-images.githubusercontent.com/88854028/181824466-78fc7b6b-2d7e-4dc7-abbd-9375b86cf6dc.png">
+      </a>
+    </td>
+    <td>
+      <a href="https://letscode.com.br/">
+        <img width="400" height="200" src="https://i.imgur.com/LpY2nT4.png">
+      </a>
+    </td>
 
-**ATENÇÃO! Os nomes das tabelas e das colunas a serem criados devem seguir exatamente os nomes listados abaixo.**
+  </tr>
 
-- usuarios
-  - id
-  - nome
-  - email (campo único)
-  - senha
-- categorias
-  - id
-  - descricao
+</table>
 
-</details>
+</div>
 
-<details>
-<summary><b>Listar categorias</b></summary>
+- Um agradecimento especial para nossa professora que nos ensina sempre com muita didática, paciência e profissionalismo impecável:
 
-#### `GET` `/categoria`
+   - Isabella Nunes (https://github.com/isadfrn)
 
-Essa é a rota que será chamada quando o usuário quiser listar todas as categorias cadastradas.
+- Um agradecimento também especial para os nossos professores das excelentíssimas aulas assíncronas da plataforma da Cubos Academy: 
 
-As categorias a seguir precisam ser previamente cadastradas para que sejam listadas no endpoint de listagem das categorias.
+   - José Messias Jr (Fundador e CEO da Cubos Academy) 
+   - Guilherme Bernal (CTO da Cubos Academy)
+   - Guido Cerqueira (Professor de Backend da Cubos Academy)
 
-## **Categorias**
+<hr>
 
-- Informática
-- Celulares
-- Beleza e Perfumaria
-- Mercado
-- Livros e Papelaria
-- Brinquedos
-- Moda
-- Bebê
-- Games
+## Contribuições
+Se você deseja contribuir:
 
-</details>
+- Crie um branch.
 
-<details>
-<summary><b>Cadastrar usuário</b></summary>
+- Faça suas contribuições.
 
-#### `POST` `/usuario`
+- Abra uma Solicitação de Pull Request para o branch "main".
 
-Essa é a rota que será utilizada para cadastrar um novo usuário no sistema.
+- Aguarde discussão e futura aprovação.
 
-Critérios de aceite:
+Agradecemos antecipadamente por qualquer contribuição. 
 
-    - Validar os campos obrigatórios:
-        - nome
-        - email
-        - senha
-    - A senha deve ser criptografada utilizando algum algoritmo de criptografia confiável.
-    - O campo e-mail no banco de dados deve ser único para cada registro, não permitindo dois usuários possuírem o mesmo e-mail.
+⭐ Se você apenas gostou deste projeto, sinta-se a vontade para nós dar uma estrelinha.  ⭐
 
-</details>
 
-<details>
-<summary><b>Efetuar login do usuário</b></summary>
+## 🎓 Autores
 
-#### `POST` `/login`
-
-Essa é a rota que permite o usuário cadastrado realizar o login no sistema.
-
-Critérios de aceite:
-
-    - Validar se o e-mail e a senha estão corretos para o usuário em questão.
-    - Gerar um token de autenticação para o usuário.
-
-</details>
-
----
-
-## **ATENÇÃO**: Todas as funcionalidades (endpoints) a seguir, a partir desse ponto, deverão exigir o token de autenticação do usuário logado, recebendo no header com o formato Bearer Token. Portanto, em cada funcionalidade será necessário validar o token informado.
-
----
-
-<details>
-<summary><b>Detalhar perfil do usuário logado</b></summary>
-
-#### `GET` `/usuario`
-
-Essa é a rota que permite o usuário logado a visualizar os dados do seu próprio perfil, de acordo com a validação do token de autenticação.
-
-</details>
-
-<details>
-<summary><b>Editar perfil do usuário logado</b></summary>
-
-#### `PUT` `/usuario`
-
-Essa é a rota que permite o usuário logado atualizar informações de seu próprio cadastro, de acordo com a validação do token de autenticação.
-
-Critérios de aceite:
-
-    - Validar os campos obrigatórios:
-        - nome
-        - email
-        - senha
-    - A senha deve ser criptografada utilizando algum algoritmo de criptografia confiável.
-    - O campo e-mail no banco de dados deve ser único para cada registro, não permitindo dois usuários possuírem o mesmo e-mail.
-
-</details>
-
-<details>
-<summary><b>Efetuar deploy da aplicação</b></summary>
-<br>
-
-Fazer deploy do projeto e disponibilizar a URL.
-
-</details>
-
-</details>
-
----
-
-<details>
-<summary>2ª Sprint</summary>
-<br>
-
-<details>
-<summary><b>Banco de Dados</b></summary>
-<br>
-
-Crie as seguintes tabelas e colunas abaixo:
-
-**ATENÇÃO! Os nomes das tabelas e das colunas a serem criados devem seguir exatamente os nomes listados abaixo.**
-
-- produtos
-  - id
-  - descricao
-  - quantidade_estoque
-  - valor
-  - categoria_id
-- clientes
-  - id
-  - nome
-  - email (campo único)
-  - cpf (campo único)
-  - cep
-  - rua
-  - numero
-  - bairro
-  - cidade
-  - estado
-
-</details>
-
----
-
-## **ATENÇÃO**: Todas as funcionalidades (endpoints) a seguir, a partir desse ponto, deverão exigir o token de autenticação do usuário logado, recebendo no header com o formato Bearer Token. Portanto, em cada funcionalidade será necessário validar o token informado.
-
----
-
-<details>
-<summary><b>Cadastrar Produto</b></summary>
-
-#### `POST` `/produto`
-
-Essa é a rota que permite o usuário logado cadastrar um novo produto no sistema.
-
-Critérios de aceite:
-
-    -   Validar os campos obrigatórios:
-        -   descricao
-        -   quantidade_estoque
-        -   valor
-        -   categoria_id
-    -   A categoria informada na qual o produto será vinculado deverá existir.
-
-</details>
-
-<details>
-<summary><b>Editar dados do produto</b></summary>
-
-#### `PUT` `/produto/:id`
-
-Essa é a rota que permite o usuário logado a atualizar as informações de um produto cadastrado.
-
-Critérios de aceite:
-
-    -   Validar se existe produto para o id enviado como parâmetro na rota.
-    -   Validar os campos obrigatórios:
-        -   descricao
-        -   quantidade_estoque
-        -   valor
-        -   categoria_id
-    -   A categoria informada na qual o produto será vinculado deverá existir.
-
-</details>
-
-<details>
-<summary><b>Listar Produtos</b></summary>
-
-#### `GET` `/produto`
-
-Essa é a rota que será chamada quando o usuário logado quiser listar todos os produtos cadastrados.
-
-Deveremos incluir um parâmetro do tipo query **categoria_id** para que seja possível consultar produtos por categorias, de modo, que serão filtrados de acordo com o id de uma categoria.
-
-Critérios de aceite:
-
-    - Caso seja enviado o parâmetro do tipo query **categoria_id**, filtrar os produtos de acordo com a categoria, caso o id de categoria informada exista.
-    - Caso não seja informado o parâmetro do tipo query **categoria_id** todos os produtos cadastrados deverão ser retornados.
-
-</details>
-
-<details>
-<summary><b>Detalhar Produto</b></summary>
-
-#### `GET` `/produto/:id`
-
-Essa é a rota que permite o usuário logado obter um de seus produtos cadastrados.
-
-Critérios de aceite:
-
-    -   Validar se existe produto para o id enviado como parâmetro na rota.
-
-</details>
-
-<details>
-<summary><b>Excluir Produto por ID</b></summary>
-
-#### `DELETE` `/produto/:id`
-
-Essa é a rota que será chamada quando o usuário logado quiser excluir um de seus produtos cadastrados.
-
-Critérios de aceite:
-
-    -   Validar se existe produto para o id enviado como parâmetro na rota.
-
-</details>
-
-<details>
-<summary><b>Cadastrar Cliente</b></summary>
-
-#### `POST` `/cliente`
-
-Essa é a rota que permite usuário logado cadastrar um novo cliente no sistema.
-.string().min(4).example('abcd')
-Critérios de aceite:
-
-    -   Validar os campos obrigatórios:
-        -   nome
-        -   email
-        -   cpf
-    -   O campo e-mail no banco de dados deve ser único para cada registro, não permitindo dois clientes possuírem o mesmo e-mail.
-    -   O campo cpf no banco de dados deve ser único para cada registro, não permitindo dois clientes possuírem o mesmo cpf.
-
-</details>
-
-<details>
-<summary><b>Editar dados do cliente</b></summary>
-
-#### `PUT` `/cliente/:id`
-
-Essa é a rota que permite o usuário realizar atualização de um cliente cadastrado.
-
-Critérios de aceite:
-
-    -   Validar se existe cliente para o id enviado como parâmetro na rota.
-    -   Validar os campos obrigatórios:
-        -   nome
-        -   email
-        -   cpf
-    -   O campo e-mail no banco de dados deve ser único para cada registro, não permitindo dois clientes possuírem o mesmo e-mail.
-    -   O campo cpf no banco de dados deve ser único para cada registro, não permitindo dois clientes possuírem o mesmo cpf.
-
-</details>
-
-<details>
-<summary><b>Listar Clientes</b></summary>
-
-#### `GET` `/cliente`
-
-Essa é a rota que será chamada quando o usuário logado quiser listar todos os clientes cadastrados.
-
-</details>
-
-<details>
-<summary><b>Detalhar Cliente</b></summary>
-
-#### `GET` `/cliente/:id`
-
-Essa é a rota que será chamada quando o usuário logado quiser obter um de seus clientes cadastrados.
-
-Critérios de aceite:
-
-    -   Validar se existe cliente para o id enviado como parâmetro na rota.
-
-</details>
-
-</details>
-<details>
-<summary>3ª Sprint</summary>
-<br>
-
-<details>
-<summary><b>Banco de Dados</b></summary>
-<br>
-
-Crie as seguintes tabelas e colunas abaixo: 
-
-**ATENÇÃO! Os nomes das tabelas e das colunas a serem criados devem seguir exatamente os nomes listados abaixo.**
-
--   pedidos
-    -   id
-    -   cliente_id
-    -   observacao
-    -   valor_total
--   pedido_produtos
-    -   id
-    -   pedido_id
-    -   produto_id
-    -   quantidade_produto
-    -   valor_produto
--   produtos
-    -   produto_imagem
-</details>
-
----
-
-## **ATENÇÃO**: Todas as funcionalidades (endpoints) a seguir, a partir desse ponto, deverão exigir o token de autenticação do usuário logado, recebendo no header com o formato Bearer Token. Portanto, em cada funcionalidade será necessário validar o token informado.
-
----
-
-<details>
-<summary><b>Cadastrar Pedido</b></summary>
-
-#### `POST` `/pedido`
-
-Essa é a rota que será utilizada para cadastrar um novo pedido no sistema.
-
-**Lembre-se:** Cada pedido deverá conter ao menos um produto vinculado.
-
-**Atenção:** As propriedades produto_id e quantidade_produto devem ser informadas dentro de um array e para cada produto deverá ser criado um objeto neste array, como ilustrado no objeto de requisição abaixo.
-Só deverá ser cadastrado o pedido caso todos produtos vinculados ao pedido realmente existão no banco de dados.
-
-```javascript
-// Corpo da requisição para cadastro de pedido (body)
-{
-    "cliente_id": 1,
-    "observacao": "Em caso de ausência recomendo deixar com algum vizinho",
-    "pedido_produtos": [
-        {
-            "produto_id": 1,
-            "quantidade_produto": 10
-        },
-        {
-            "produto_id": 2,
-            "quantidade_produto": 20
-        }
-    ]
-}
-```
-
-Critérios de aceite:
-
-    -   Validar os campos obrigatórios:
-        -   cliente_id
-        -   pedido_produtos
-            -   produto_id
-            -   quantidade_produto
-    -   Validar se existe cliente para o id enviado no corpo (body) da requisição.
-    -   Validar se existe produto para cada produto_id informado dentro do array enviado no corpo (body) da requisição.
-    -   Validar se existe a quantidade em estoque de cada produto existente dentro do array, de acordo com a quantidade informada no corpo (body) da requisição.
-    -   O pedido deverá ser cadastrado, apenas, se todos os produtos estiverem validados. 
-    -   Enviar e-mail para o cliente notificando que o pedido foi efetuado com sucesso.   
-
-</details>
-
-<details>
-<summary><b>Listar Pedidos</b></summary>
-
-#### `GET` `/pedido`
-
-Essa é a rota que será chamada quando o usuário logado quiser listar todos os pedidos cadastrados.
-
-Deveremos incluir um parâmetro do tipo query **cliente_id** para que seja possível consultar pedidos por clientes, de modo, que serão filtrados de acordo com o id de um cliente.
-
-```javascript
-// Resposta para listagem de pedido (body)
-[
-    {
-        "pedido": {
-            "id": 1,
-            "valor_total": 230010,
-            "observacao": null,
-            "cliente_id": 1
-        },
-        "pedido_produtos": [
-            {
-                "id": 1,
-                "quantidade_produto": 1,
-                "valor_produto": 10,
-                "pedido_id": 1,
-                "produto_id": 1
-            },
-            {
-                "id": 2,
-                "quantidade_produto": 2,
-                "valor_produto": 230000,
-                "pedido_id": 1,
-                "produto_id": 2
-            }
-        ]
-    }
-]
-```
-
-Critérios de aceite:
-
-    - Caso seja enviado o parâmetro do tipo query **cliente_id**, filtrar os pedidos de acordo com o cliente, caso o id do cliente informado exista.
-    - Caso não seja informado o parâmetro do tipo query **cliente_id** todos os pedidos cadastrados deverão ser retornados.
-
-</details>
-
-<details>
-<summary><b>Aplicar validação na exclusão de produto</b></summary>
-<br>
-
-Deverá ser aplicada uma regra de negócio que não permitirá exclusão de produto que tenha sido registrado em algum pedido.
-
-Critérios de aceite:
-
-    - Validar se o produto que está sendo excluído não está vinculado a nenhum pedido, caso estiver, não poderá ser excluído e deverá ser retornada uma mensagem indicando o motivo.
-
-</details>
-
-<details>
-<summary><b>Aprimorar cadastro/atualização de produto</b></summary>
-<br>
-
-Deverão ser aprimorados o cadastro e a atualização de produto para permitir vincular uma imagem a um produto. 
-Deverá ser criada uma coluna `produto_imagem` para que seja possível efetuar o vínculo entre a imagem e o produto.
-
-Critérios de aceite:
-
-    - O campo `produto_imagem` deve ser opcional, mas, em caso de ser enviado no corpo da requisição deveremos processar a imagem vinculada a essa propriedade e armazenar a imagem em um servidor de armazenamento (Supabase, Blackblaze, etc...)
-    - Armazenar na coluna `produto_imagem` a URL que possibilita visualizar a imagem que foi efetuada upload para o servidor de armazenamento.
-
-**Lembre-se:** A URL retornada deve ser válida, ou seja, ao ser clicada deve possibilitar visualizar a imagem que foi feito upload.
-
-**ATENÇÃO:** Abaixo segue o exemplo de uma URL fictícia, mas que no caso, ilustra o que o serviço de armazenamento do Blackblaze retornaria após upload efetuado com sucesso, portanto essa seria no caso a URL que armazaremos na coluna `produto_imagem` no banco de dados.
-
-```javascript
-// Resposta cadastro/atualização de produto (body)
-{
-    "descricao": "Motorola moto g9 plus",
-    "quantidade_estoque": 100,
-    "valor": 15000,
-    "categoria_id": 2,
-    "produto_imagem": "https://s3.us-east-005.backblazeb2.com/desafio-final.jpg"
-}
-```
-
-</details>
-
-<details>
-<summary><b>Aprimorar exclusão de produto</b></summary>
-<br>
-
-Deverá ser aprimorada a exclusão de produto para que quando o produto for excluído também seja removida a imagem vinculada a ele na servidor de armazenamento.
-
-Critérios de aceite:
-
-    - Na exclusão do produto a imagem vinculada a este produto deverá ser excluída do servidor de armazenamento.
-
-</details>
-
-</details>
-
-###### tags: `back-end` `módulo 5` `nodeJS` `PostgreSQL` `API REST` `desafio`
-
----
-
-###### tags: `back-end` `módulo 5` `nodeJS` `PostgreSQL` `API REST` `desafio`
+<table>
+    <tr>
+        <td align="center">
+            <a href="https://github.com/renataluz">
+                <img src="https://s4.aconvert.com/convert/p3r68-cdx67/ayedv-a1epe.jpg" width="180px;" alt="Imagem de Renata Luz" />
+                <br />
+                <sub><b>Renata Luz</b></sub>
+            </a>
+        </td>
+        <td align="center">
+            <a href="https://github.com/SuellendaVinci">
+                <img src= "https://s4.aconvert.com/convert/p3r68-cdx67/axec1-mieql.jpg" width="180px;" alt="Imagem de Suellen Priscilla de Camargo" />
+                <br />
+                <sub><b>Suellen Camargo</b></sub>
+            </a>
+        </td>
+         <td align="center">
+            <a href="https://github.com/larissaOliveiraz">
+                <img src= "https://avatars.githubusercontent.com/u/107778728?v=4" width="180px;" alt="Imagem de Larissa Oliveira" />
+                <br />
+                <sub><b>Larissa Oliveira</b></sub>
+            </a>
+        </td>
+         <td align="center">
+            <a href="https://github.com/gessicafontes">
+                <img src= "https://avatars.githubusercontent.com/u/69762470?v=4" width="180px;" alt="Imagem de Géssica Fontes" />
+                <br />
+                <sub><b>Géssica Fontes</b></sub>
+            </a>
+        </td>
+         <td align="center">
+            <a href="https://github.com/lorena-magalhaes">
+                <img src= "https://avatars.githubusercontent.com/u/122636749?v=4" width="180px;" alt="Imagem de Lorena Magalhães" />
+                <br />
+                <sub><b>Lorena Magalhães</b></sub>
+            </a>
+        </td>
+    </tr>
+</table>
+
+## 📝 Licença
+
+Este projeto esta sobe a licença MIT.
