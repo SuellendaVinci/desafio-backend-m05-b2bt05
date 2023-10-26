@@ -45,7 +45,8 @@ O Projeto de uma API para um ponto de venda (PDV) tem como ideia principal o arm
 ## 🛠 Tecnologias Utilizadas
 
  <div style="display: inline_block">
-
+<img align="center" alt="Git" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-plain.svg" />
+<img align="center" alt="JavaScript" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
 <img align="center" alt="Node.JS" width="60"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" > 
 <img align="center" alt="Express" width="40" src="https://img.icons8.com/officexs/16/000000/express-js.png" alt="express-js" >
 <img align="center" alt="Nodemon" width="60" src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_nodemon_icon_130299.png" alt="express-js" >
@@ -55,7 +56,7 @@ O Projeto de uma API para um ponto de venda (PDV) tem como ideia principal o arm
 </div>
 <hr>
 
- NodeJS, Express, Nodemon, PostgreSQL, JsonWebToken
+ Git, JavaScript, NodeJS, Express, Nodemon, PostgreSQL, JsonWebToken
 
 ## 👷 Como Executar o Projeto
 
