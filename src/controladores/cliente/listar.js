@@ -1,11 +1,11 @@
 const listagens = require('../../servicos/repositorios/clientes/listagemCliente');
 
 const listarClientes = async (req, res) => {
-    const { id } = req.params;
+    const { cliente_id } = req.query;
 
     try {
 
-        const listagemDeClientes =  await listagens(id);
+        const listagemDeClientes = await listagens(cliente_id);
 
         return res.status(listagemDeClientes.status).json(listagemDeClientes.resposta);
 

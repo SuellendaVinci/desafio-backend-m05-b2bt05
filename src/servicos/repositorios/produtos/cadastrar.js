@@ -15,12 +15,12 @@ const cadastrarProduto = async (produto) => {
 
     const novoProduto = await knex("produtos").insert(produtoSemImagem).returning('*');
 
-    if (!novoProduto[0]) return produtoNaoCadastrado
+    if (!novoProduto[0]) return produtoNaoCadastrado;
 
     if (imagem) {
 
       const objImagem = await salvarImagem(
-        `produtos/${novoProduto[0].id}/${imagem.originalname}`,
+        `${novoProduto[0].id}`,
         imagem.buffer,
         imagem.mimetype
       )
@@ -32,7 +32,7 @@ const cadastrarProduto = async (produto) => {
       novoProduto[0].produto_imagem = objImagem;
     }
 
-    cadastroValido.resposta = novoProduto;
+    cadastroValido.resposta = novoProduto[0];
 
     return cadastroValido
 

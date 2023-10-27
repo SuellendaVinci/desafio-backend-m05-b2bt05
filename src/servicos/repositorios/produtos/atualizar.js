@@ -7,34 +7,32 @@ const { atualizacaoValida, atualizacaoInvalida, categoriaInvalida, produtoInvali
 const atualizarProduto = async (produto) => {
 
   try {
+    const produtoExistente = await consultaProdutos(produto.id);
+
+    if (!produtoExistente[0]) return produtoInvalido
 
     const categoriaExistente = await listarCategorias(produto.categoria_id);
 
     if (!categoriaExistente.resposta[0]) return categoriaInvalida;
 
-    if (produto.produto_imagem) {
+    let imagem = null;
 
-      const { produto_imagem: imagem } = produto;
+    await deletarImagem(`${produto.id}`);
 
-      const path = produtoExistente[0].produto_imagem.slice(produtoExistente[0].produto_imagem.indexOf("produtos"));
-
-      await deletarImagem(path);
-
-      const objImagem = await salvarImagem(
-        `produtos/${produto.id}/${imagem.originalname}`,
-        imagem.buffer,
-        imagem.mimetype
+    if (produto.produto_imagem)
+      imagem = await salvarImagem(
+        `${produto.id}`,
+        produto.produto_imagem.buffer,
+        produto.produto_imagem.mimetype
       )
 
-      produto.produto_imagem = objImagem;
-
-    }
+    produto.produto_imagem = imagem;
 
     const produtoAtualizado = await knex("produtos")
       .update(produto)
       .where({ id: produto.id }).returning("*");
 
-    atualizacaoValida.resposta = produtoAtualizado;
+    atualizacaoValida.resposta = produtoAtualizado[0];
 
     return atualizacaoValida;
 

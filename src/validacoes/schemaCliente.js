@@ -27,15 +27,19 @@ const schemaCliente = joi.object({
         'any.required': emailObrigatorio,
         'string.base': emailTipoString
     }),
-    cpf: joi.string().max(14).required().messages({
-            'string.empty': cpfObrigatorio,
-            'string.pattern.base': mensagens.formatoCpfInvalido,
-            'any.required': cpfObrigatorio,
-            'string.limit': mensagens.formatoCpfInvalido,
-            'string.base': cpfTipoString
-        }),
-    cep: joi.string().max(9).messages({
-        'string.length': mensagens.formatoCepInvalido,
+    cpf: joi.string().min(11).max(14).required().messages({
+        'string.empty': cpfObrigatorio,
+        'string.min': mensagens.formatoCpfInvalido,
+        'string.max': mensagens.formatoCpfInvalido,
+        'string.pattern.base': mensagens.formatoCpfInvalido,
+        'any.required': cpfObrigatorio,
+        'string.limit': mensagens.formatoCpfInvalido,
+        'string.base': cpfTipoString
+    }),
+    cep: joi.string().min(8).max(9).messages({
+        // 'string.length': mensagens.formatoCepInvalido,
+        'string.min': mensagens.formatoCepInvalido,
+        'string.max': mensagens.formatoCepInvalido,
         'string.base': cepTipoString
     }),
     rua: joi.string().messages({

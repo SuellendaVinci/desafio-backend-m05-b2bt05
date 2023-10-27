@@ -24,7 +24,7 @@ const schemaProduto = joi.object({
     'number.base': quantidade_estoqueTipoNumber,
     'number.positive': quantidade_estoqueTipoNumber
   }),
-  valor: joi.number().positive().required().messages({
+  valor: joi.number().integer().positive().required().messages({
     'any.empty': valorObrigatorio,
     'any.required': valorObrigatorio,
     'number.base': valorTipoNumber,

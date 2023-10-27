@@ -80,10 +80,10 @@ const emailInvalido = {
 }
 
 const formatoCepInvalido =
-    'O campo cep deve ter no máximo 9 dígitos.'
+    'O campo cep deve ter no mínimo 8 e no máximo 9 dígitos.'
 
 const formatoCpfInvalido =
-    cpfInvalido.resposta
+    cpfInvalido.resposta.mensagem
 
 const formatoEmailInvalido =
     'O campo e-mail deve ter um formato válido.'
@@ -100,6 +100,12 @@ const naoAutorizado = {
     status: 404,
     resposta: { 'mensagem': 'Não autorizado.' }
 }
+
+const pedidoMinimo =
+    'O pedido deve ter ao menos um produto para ser válido.'
+
+const produtoEmArray =
+    'O(s) produto(s) deve(m) ser enviados em um array.'
 
 const produtoExcluido = {
     status: 200,
@@ -166,7 +172,9 @@ module.exports = {
     formatoSenhaInvalido,
     loginInvalido,
     naoAutorizado,
+    pedidoMinimo,
     produtoExcluido,
+    produtoEmArray,
     produtoInvalido,
     produtoNaoCadastrado,
     produtoValido,
