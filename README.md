@@ -88,15 +88,13 @@ npm install
 npm run start
 ```
 
-A API estará disponível em http://localhost:3333.
+## LINK DO DEPLOY 
+
+https://tame-erin-chipmunk-wig.cyclic.cloud/
 
 ## 🖼 Use o Insomnia ou outro programa para testar as rotas
 
-- Apenas alguns exemplos:
-
-
-
-
+* A API estará disponível em http://localhost:3000.
 
 ## 🌠 AGRADECIMENTOS 
 
