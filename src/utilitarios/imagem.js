@@ -23,7 +23,6 @@ const salvarImagem = async (path, buffer, mimetype) => {
 
 }
 
-
 const deletarImagem = async (path) => {
 
     await s3.deleteObject({

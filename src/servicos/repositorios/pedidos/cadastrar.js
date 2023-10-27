@@ -1,3 +1,4 @@
+const { enviarEmailPedido } = require("../../../utilitarios/email");
 const knex = require("../../bancoDeDados/conexao");
 
 const cadastrarPedido = async ({ cliente_id, observacao, pedido_produtos }) => {
@@ -11,6 +12,8 @@ const cadastrarPedido = async ({ cliente_id, observacao, pedido_produtos }) => {
 
     let valor_total = 0;
     let valor_produto_list = [];
+    let produtos = [];
+
     for (let i = 0; i < pedido_produtos.length; i++) {
       const produtoExistente = await knex("produtos")
         .where("id", pedido_produtos[i].produto_id)
@@ -33,6 +36,8 @@ const cadastrarPedido = async ({ cliente_id, observacao, pedido_produtos }) => {
 
       valor_total +=
         pedido_produtos[i].quantidade_produto * produtoExistente.valor;
+
+      produtos[i] = produtoExistente;
     }
 
     const pedido = await knex("pedidos")
@@ -43,6 +48,8 @@ const cadastrarPedido = async ({ cliente_id, observacao, pedido_produtos }) => {
       })
       .returning(["id"]);
 
+    const itensPedido = [];
+
     for (let i = 0; i < pedido_produtos.length; i++) {
       await knex("pedido_produtos").insert({
         pedido_id: pedido[0].id,
@@ -50,7 +57,31 @@ const cadastrarPedido = async ({ cliente_id, observacao, pedido_produtos }) => {
         quantidade_produto: pedido_produtos[i].quantidade_produto,
         valor_produto: valor_produto_list[i],
       });
+
+      itensPedido.push({
+        produto: produtos[i],
+        pedido_id: pedido[0].id,
+        produto_id: pedido_produtos[i].produto_id,
+        quantidade_produto: pedido_produtos[i].quantidade_produto,
+        valor_produto: valor_produto_list[i],
+        descricao: produtos[i].descricao
+      })
     }
+
+    const dadosEmail = {
+      id: pedido[0].id,
+      cliente_id,
+      nome: clienteExistente.nome,
+      email: clienteExistente.email,
+      observacao: observacao ? observacao : "",
+      valor_total,
+      itensPedido
+    }
+
+    enviarEmailPedido(dadosEmail);
+
+    return dadosEmail;
+
   } catch (error) {
     throw error;
   }

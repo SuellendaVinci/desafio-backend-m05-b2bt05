@@ -15,7 +15,7 @@ const excluirProduto = async (id) => {
 
     if (produtoEmUso.length > 0) {
       return mensagens.produtoEmUso
-      
+
     }
 
     const imagem = produto[0].produto_imagem;
@@ -23,9 +23,7 @@ const excluirProduto = async (id) => {
     await knex('produtos').del().where({ id });
 
     if (imagem) {
-      const path = imagem.slice(imagem.indexOf("produtos"));
-
-      await deletarImagem(path)
+      await deletarImagem(`${id}`);
     }
 
     return mensagens.produtoExcluido

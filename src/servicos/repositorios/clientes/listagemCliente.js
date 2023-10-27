@@ -11,7 +11,7 @@ const listagens = async (id) => {
 
             if (clienteExistente.length < 1) return clienteInvalido;
 
-            clienteValido.resposta = clienteExistente;
+            clienteValido.resposta = clienteExistente[0];
 
             return clienteValido;
 
