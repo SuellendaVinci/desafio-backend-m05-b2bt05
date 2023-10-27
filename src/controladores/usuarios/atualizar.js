@@ -20,6 +20,7 @@ const atualizar = async (req, res) => {
 
     return res.status(usuario.status).json(usuario.resposta);
   } catch (error) {
+    console.log(error.message)
     return res.status(500).json(error.message);
   }
 };
